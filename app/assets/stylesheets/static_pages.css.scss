@@ -1,0 +1,180 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* MIXINS, VARIABLES, ETC... */
+
+$links: #4f2682;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: "Open Sans Light", Helvetica, sans-serif;
+$browser-width: 1170px;
+
+/* UNIVERSAL */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.full-container {
+  width: 100%;
+}
+
+.container {
+  width: $browser-width;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing-container {
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body {
+  font-family: $normal-font;
+  font-size: 16px;
+  line-height: 26px;
+  color: #000;
+}
+
+h2 {
+  font-family: $fancy-font;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: $fancy-font;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 300;
+}
+
+a {
+  color: $links;
+  text-decoration: none;
+  &:hover {
+    color: #fff;
+  }
+}
+
+p {
+  margin-bottom: 15px;
+  a {
+  text-decoration: none;
+    &:hover {
+    text-decoration: underline;
+    }
+  }
+}
+
+/* HEADER */
+
+.site-title {
+  float: left;
+  font-size: 1.7em;
+  color: $links;
+  padding: 10px;
+  font-family: $fancy-font;
+  &:hover {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.nav-background {
+  background-color: #e5e5e5;
+}
+
+.nav {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      font-family: $fancy-font;
+      padding: 10px;
+      position: relative;
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* SIGNU UP PAGE */
+
+.i-am {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  font-size: 3em;
+  text-align: center;
+  font-family: $fancy-font;
+}
+
+@mixin signup-text {
+  height: 250px;
+  padding: 0 165px 0 165px;
+  line-height: 250px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 100px;
+  border: 2px solid #000;
+  font-size: 3em;
+  font-family: $fancy-font;
+  color: #000;
+}
+
+.signup-text {
+  @include signup-text;
+  margin-left: 125px;
+  float: left;
+  &:hover {
+    background-color: #000;
+    color: #4f2682;
+  }
+}
+
+.signup-text2 {
+  @include signup-text;
+  margin-right: 125px;
+  float: right;
+  &:hover {
+    background-color: #000;
+    color: #4f2682;
+  }
+}
+
+/* FOOTER */
+
+.full-footer-container {
+  width: 100%;
+  clear: both;
+}
+
+.footer {
+  width: 100%;
+  display: inline-block;
+  font-family: $fancy-font;
+  span {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      position: relative;
+      float: left;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}

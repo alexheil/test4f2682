@@ -1,0 +1,8 @@
+<%= provide(:title, "Sign In As") %>
+<%= render 'partials/static_pages_header' %>
+<div class="container">
+  <p class="i-am">I am a(n)...</p>
+  <%= link_to "fan", fan_session_path, class: "signup-text" %>
+  <%= link_to "artist", artist_session_path, class: "signup-text2" %>
+</div>
+<%= render 'partials/static_pages_footer' %>

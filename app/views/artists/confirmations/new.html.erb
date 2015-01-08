@@ -1,0 +1,22 @@
+<%= render "partials/static_pages_header" %>
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>resend artist confirmation instructions</h3>
+    </div>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :email, "email", class: "label" %>
+        <%= f.email_field :email, autofocus: true, class: "text-field" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "resend", class: "submit-button" %>
+      </div>
+    <% end %>
+    <div class="shared-links">
+      <%= render "artists/shared/links" %>
+    </div>
+  </div>
+</div>
+<%= render "partials/static_pages_footer" %>

@@ -1,0 +1,22 @@
+<header class="full-container nav-background">
+  <div class="container">
+    <div class="nav">
+    <%= link_to "project4f2682", root_path, class: "site-title" %>
+      <nav>
+        <ul>
+        <% if artist_signed_in? || fan_signed_in? %>
+        <li><%= link_to "sign out",  sign_out_path%></li>
+        <% if artist_signed_in? %>
+          <li><%= link_to current_artist.username, current_artist %></li>
+          <% elsif fan_signed_in? %>
+          <li><%= link_to current_fan.username, current_fan %></li>
+          <% end %>
+        <% else %>
+        <li><%= link_to "sign in", sign_in_path %></li>
+        <li><%= link_to "sign up", sign_up_path %></li>
+        <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

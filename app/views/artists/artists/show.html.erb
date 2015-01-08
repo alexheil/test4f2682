@@ -1,0 +1,16 @@
+<div>
+  <%= @artist.username %>
+</div>
+<div>
+  <ul>
+    <li><%= link_to "timeline", "current_artist" %></li>
+    <li><%= link_to "music", "artist_music_path(@artist)" %></li>
+    <li><%= link_to "bio", "artist_bio_path(@artist)" %></li>
+  </ul>
+</div>
+<div>
+    <h3><%= @artist.artist_name %></h3>
+  </div>
+  <div>
+    <%= @artist.artist_profile.location %>
+</div>

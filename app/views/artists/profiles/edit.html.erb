@@ -1,0 +1,52 @@
+<%= render "partials/static_pages_header" %>
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>create <%=  @artist.artist_name %>'s profile</h3>
+    </div>
+    <%= form_for(@profile, url: edit_profile_path) do |f| %>
+      <div class="field">
+        <%= f.label :facebook_url, "facebook url", class: "label" %>
+        <%= f.text_field :facebook_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :twitter_url, "twitter url", class: "label" %>
+        <%= f.text_field :twitter_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :youtube_url, "youtube url", class: "label" %>
+        <%= f.text_field :youtube_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :itunes_url, "itunes url", class: "label" %>
+        <%= f.text_field :itunes_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :amazon_url, "amazon url", class: "label" %>
+        <%= f.text_field :amazon_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :location, "location", class: "label" %>
+        <%= f.text_field :location, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :genre, "genre", class: "label" %>
+        <%= f.text_field :genre, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :members, "members", class: "label" %>
+        <%= f.text_field :members, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :biography, "biography", class: "label" %>
+        <%= f.text_area :biography, autofocus: true , class: "text-area" %>
+      </div>
+      <div class="profile-actions">
+        <%= f.submit "skip", class: "skip-button" %>
+        <%= f.submit "create profile", class: "profile-button" %>
+      </div>
+      <p class="text-under-profile">you can edit your profile later</p>
+    <% end %>
+  </div>
+</div>
+<%= render "partials/static_pages_footer" %>

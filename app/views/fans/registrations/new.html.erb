@@ -1,0 +1,41 @@
+<%= render "partials/static_pages_header" %>
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>sign up as a fan</h3>
+    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :username, "username", class: "label" %>
+        <%= f.text_field :username, autofocus: true , class: "text-field" %>
+        <p class="text-under-field">this will be your url // username.project.com</p>
+      </div>
+      <div class="field">
+        <%= f.label :fan_name, "your name", class: "label" %>
+        <%= f.text_field :fan_name, class: "text-field" %>
+        <p class="text-under-field">this is your display name</p>
+      </div>
+      <div class="field">
+        <%= f.label :email, "email", class: "label" %>
+        <%= f.email_field :email, class: "text-field" %>
+        <p class="text-under-field">you will need to confirm your email to sign in</p>
+      </div>
+      <div class="field">
+        <%= f.label :password, "password", class: "label" %>
+        <%= f.password_field :password, autocomplete: "off", class: "text-field" %>
+        <% if @validatable %>
+        <p class="text-under-field"><%= @minimum_password_length %> characters minimum</p>
+        <% end %>
+      </div>
+      <div class="actions">
+        <%= f.submit "sign up", class: "submit-button" %>
+      </div>
+      <p class="terms">by clicking 'sign up' you acknowledge that you have read and agree to the <%= link_to "terms of use", terms_of_use_path %>.</p>
+    <% end %>
+    <div class="shared-links">
+      <%= render "fans/shared/links" %>
+    </div>
+  </div>
+</div>
+<%= render "partials/static_pages_footer" %>
