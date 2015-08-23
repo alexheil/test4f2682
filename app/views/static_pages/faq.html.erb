@@ -2,6 +2,47 @@
 <%= render 'partials/static_pages_header' %>
 <div class="landing-container">
   <div class="landing-content">
+    <div class="static-pages-title">
+      <h3>faq</h3>
+    </div>
+
+    <div class="faq-mini-headlines">
+      account information
+    </div>
+
+    <div class="faq-minier-headlines">
+      How do I delete my account?
+    </div>
+    <p>First of all, I'm very sad to see that you want to delete your account. Deeply saddened... alright, I'm over it.</p>
+    <p>To delete your account, both fan and artist, you need to go to your <%= link_to "settings", edit_fan_registration_path if fan_signed_in? %><%= link_to "settings", edit_artist_registration_path if artist_signed_in? %><%= "settings" if !artist_signed_in? && !fan_signed_in? %> and locate the delete button on the bottom of the page. Click it and you'll be prompted to delete your account. Beware, this is permanent and wipes you clean out of the database. No one, not even me, can get your account back </p>
+    <p>If you're an artist, be sure to complete any merch orders on your account as those will remain in the database. Failure to do so may result in my laywers slamming Thor's hammer down on your front door's step. Things'll get ugly quick.</p>
+    <p>Good riddance, and don't let the door slam you on the ass on your way out.</p>
+
+    <div class="faq-mini-headlines">
+      purchases and shipping
+    </div>
+
+    <div class="faq-minier-headlines">
+      Why do I have to be signed into a fan account to purchase merch from an artist?
+    </div>
+    <p>Good question, my dear.</p>
+    <p>The main reason is security. I discovered a huge security flaw that would allow just about anyone with the right amount of data to see your super-top-secret information, including your address. I recently stumbled upon this website, <a href="https://shipyourenemiesglitter.com">ship your enemies glitter</a>, and would honestly hate myself if anyone mailed you glitter because of a security flaw in this site.</p>
+    <p>A far more important reason is because with a fan account you can track all the purchases you've made. This allows you to see just how much money you've blown on your favorite artists merch (if you don't give your wife your password, she'll never know). But more importantly, it allows you to see if your items have been shipped or not.</p>
+
+    <div class="faq-minier-headlines">
+      Why can't I get anything shipped outside of the U.S.?
+    </div>
+    <p>Because I'm too stupid.</p>
+    <p>This is literally the reason. When I started this site, I figured everyone's addresses and eCommerce laws were the same. I'm not always sure how things work outside of the U.S. Typical American ignorance.</p>
+    <p>I'm learning and working on how to ship to your cool countries. But for now, I can only offer shipping to the U.S.</p>
+    <p>I'm sorry for being a dumbass.</p>
+
+    <div class="faq-minier-headlines">
+      How do I mark stuff as shipped?
+    </div>
+    <p>Simple.</p>
+    <p>As an artist, go to your <%= link_to "merch transactions", artist_merch_transactions_path(current_artist) if artist_signed_in? %><%= "merch transactions" if !artist_signed_in? %> page and locate the "shipped?" column. You can click on items in this column.</p>
+    <p>Upon clicking on one of these items you will be magically transported to a page where you can mark a purchase as shipped (true) or not shipped (false).</p>
 
   </div>
 </div>

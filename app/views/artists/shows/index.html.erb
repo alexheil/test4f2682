@@ -1,0 +1,41 @@
+<%= provide(:title, "#{@artist.artist_name} | Shows") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+    <% if @artist.artist_shows.any? %>
+      <table>
+        <tr>
+          <td class="artist-show-top-date">date</td>
+          <td class="artist-show-top-venue">venue</td>
+          <td class="artist-show-top-location">location</td>
+          <td class="artist-show-top-ticket">tickets</td>
+        </tr>
+      </table>
+      <div class="artist-show-table-bottom">
+      </div>
+      <% @artist.artist_shows.each do |show| %>
+      <table>
+        <tr>
+          <td class="artist-show-table-date"><%= show.show_month %>.<%= show.show_day %>.<%= show.show_year %></td>
+          <td class="artist-show-table-venue"><%= show.show_venue %></td>
+          <td class="artist-show-table-location"><%= show.show_location %></td>
+          <% if show.show_ticket_url != "" %>
+          <td class="artist-show-table-ticket"><%= link_to "buy", show.show_ticket_url %></td>
+          <% else %>
+          <td class="artist-show-table-ticket">tickets n/a</ickets>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+    <% else %>
+      <p class="no-artist-show-profile"><%= "#{@artist.artist_name} hasn't uploaded any shows yet" %></p>
+    <% end %>
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

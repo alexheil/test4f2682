@@ -1,16 +1,142 @@
-<div>
-  <%= @artist.username %>
-</div>
-<div>
-  <ul>
-    <li><%= link_to "timeline", "current_artist" %></li>
-    <li><%= link_to "music", "artist_music_path(@artist)" %></li>
-    <li><%= link_to "bio", "artist_bio_path(@artist)" %></li>
-  </ul>
-</div>
-<div>
-    <h3><%= @artist.artist_name %></h3>
+<%= provide(:title, "#{@artist.artist_name}") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+      <div class="artist-side-profile">
+      <% if artist_signed_in? && @artist.id == current_artist.id && @artist.artist_profile.location == "" && @artist.artist_profile.genre == "" && @artist.artist_profile.members == "" && @artist.artist_profile.biography == "" && @artist.artist_profile.facebook_url == "" && @artist.artist_profile.twitter_url == "" && @artist.artist_profile.youtube_url == "" && @artist.artist_profile.itunes_url == "" && @artist.artist_profile.amazon_url == "" && @artist.artist_profile.google_play_url == "" && @artist.artist_profile.record_label == "" %>
+        <p class="no-artist-show-profile">you do not have any profile information</p>
+        <div class="no-artist-show-profile-button-container">
+          <%= link_to "update your profile", edit_artist_profile_path, class: "no-artist-show-profile-button" %>
+        </div>
+      <% elsif @artist.artist_profile.location == "" && @artist.artist_profile.genre == "" && @artist.artist_profile.members == "" && @artist.artist_profile.biography == "" && @artist.artist_profile.facebook_url == "" && @artist.artist_profile.twitter_url == "" && @artist.artist_profile.youtube_url == "" && @artist.artist_profile.itunes_url == "" && @artist.artist_profile.amazon_url == "" && @artist.artist_profile.google_play_url == "" && @artist.artist_profile.record_label == "" %>
+        <p class="no-artist-show-profile"><%= "#{@artist.artist_name} does not have any profile information yet" %></p>
+      <% end %>
+        <% if @artist.artist_profile.location == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">location //</p>
+        <p class="artist-show-profile-description"><%= @artist.artist_profile.location %></p>
+        <% end %>
+        <% if @artist.artist_profile.genre == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">genre //</p>
+        <p class="artist-show-profile-description"><%= @artist.artist_profile.genre %></p>
+        <% end %>
+        <% if @artist.artist_profile.members == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">members //</p>
+        <p class="artist-show-profile-description"><%= @artist.artist_profile.members %></p>
+        <% end %>
+        <% if @artist.artist_profile.record_label == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">record label //</p>
+        <p class="artist-show-profile-description"><%= @artist.artist_profile.record_label %></p>
+        <% end %>
+        <% if @artist.artist_profile.biography == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">biography //</p>
+        <p class="artist-show-profile-description"><%= @artist.artist_profile.biography %></p>
+        <% end %>
+        <% if @artist.artist_profile.facebook_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">facebook //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s Facebook page", @artist.artist_profile.facebook_url %></p>
+        <% end %>
+        <% if @artist.artist_profile.twitter_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">twitter //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s Twitter page", @artist.artist_profile.twitter_url %></p>
+        <% end %>
+        <% if @artist.artist_profile.youtube_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">youtube //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s YouTube page", @artist.artist_profile.youtube_url %></p>
+        <% end %>
+        <% if @artist.artist_profile.itunes_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">itunes //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s iTunes page", @artist.artist_profile.itunes_url %></p>
+        <% end %>
+        <% if @artist.artist_profile.amazon_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">amazon //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s Amazon page", @artist.artist_profile.amazon_url %></p>
+        <% end %>
+        <% if @artist.artist_profile.google_play_url == "" %>
+        <% else %>
+        <p class="artist-show-profile-title">google play //</p>
+        <p class="artist-show-profile-description"><%= link_to "#{@artist.artist_name}'s Google Play page", @artist.artist_profile.google_play_url %></p>
+        <% end %>
+      </div>
+      <div class="artist-side-micropost">
+      <% if @artist == current_artist %>
+      <%= form_for(@micropost) do |f| %>
+        <div class="artist-micropost-field">
+          <%= f.text_area :content, placeholder: "what have you been up to?", class: "artist-micropost-content-input" %>
+        </div>
+        <div class="artist-micropost-actions">
+          <%= f.submit "post update", class: "submit-micropost-button" %>
+        </div>
+      <% end %>
+      <% end %>
+      <% if @artist.artist_microposts.any? %>
+      <% @artist.artist_microposts.take(20).each do |micropost| %>
+        <div class="artist-micropost-container">
+          <div class="artist-micropost-posted-by">
+            <span class="artist-posted-by"><%= "#{@artist.artist_name}" %></span><span class="artist-posted-time-ago"> posted <%= time_ago_in_words(micropost.created_at) %> ago
+            <% if @artist == current_artist %>
+             // <%= link_to "delete post", artist_micropost_path(micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+            <% end %>
+          </div>
+          <div class="artist-micropost-content">
+            <%= micropost.content %>
+          </div>
+          <div class="artist-micropost-total-votes">
+            <%= link_to "∧", '#' %> <%= micropost.total_votes %> <%= link_to "∨" , '#' %>
+          </div>
+          <div class="artist-micropost-social">
+            <%= micropost.artist_micropost_comments.count %> <a class="artist-micropost-comment-click">comments</a>
+          </div>
+          <div class="artist-micropost-comments-container">
+          <% micropost.artist_micropost_comments.each do |comment| %>
+            <div class="artist-micropost-comments-name">
+              <span class="comment-artist-fan-posted-by"><%= link_to Artist.find(comment.artist_id).artist_name, artist_path(comment.artist_id) if comment.fan_id.nil? %><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(comment.fan_id) if comment.artist_id.nil?  %></span> posted <%= time_ago_in_words(comment.created_at) %> ago
+              <% if @artist == current_artist || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) %>
+             // <%= link_to "delete comment", artist_micropost_comment_path(comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+            </div>
+            <div class="artist-micropost-comments-content">
+              <%= comment.content %>
+            </div>
+            <div class="artist-micropost-comment-total-votes">
+              <%= link_to "∧", '#' %> <%= comment.total_votes %> <%= link_to "∨" , '#' %>
+            </div>
+          <% end %>
+            <%= form_for(micropost.artist_micropost_comments.build) do |f| %>
+            <div class="artist-micropost-comment-form-container">
+              <div class="artist-micropost-comment-field">
+                <%= f.hidden_field :artist_micropost_id %>
+                <%= f.text_area :content, placeholder: "leave a comment // tell someone they suck", class: "artist-micropost-comment-input" %>
+              </div>
+              <div class="artist-micropost-comment-actions">
+                <%= f.submit "comment",  class: "artist-micropost-comment-post-button" %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <% else %>
+      <div class="artist-no-microposts">
+        <%= @artist.artist_name %> hasn't posted anything yet.
+      </div>
+      <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= @artist.artist_profile.location %>
+  <%= render "artists/partials/artist_sidebar" %>
 </div>
+<%= render "partials/static_pages_footer" %>

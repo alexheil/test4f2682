@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="artist-add-new-video-button-container">
+      <%= link_to "add a new video", new_artist_video_path, class: "artist-add-new-video-button" %>
+    </div>
+  <% if @artist.artist_videos.any? %>
+  <p class="artist-video-title-option">or click on a video below to edit it</p>
+      <% @artist.artist_videos.each do |video| %>
+        <div class="artist-video-title-select">
+          <%= link_to video.video_title, edit_artist_video_path(video) %> // <%= link_to "delete video", artist_video_path(video), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

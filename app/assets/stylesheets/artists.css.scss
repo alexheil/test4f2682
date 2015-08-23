@@ -1,0 +1,1615 @@
+/* ************ MIXINS, VARIABLES, ETC... ************ */
+
+$links: #1DE9B6;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
+$table-font: "Open Sans", Helvetica, sans-serif;
+$browser-width: 1170px;
+
+/* ************ COVER PHOTO & NAV ************ */
+
+.artist-cover-photo {
+  width:1170px;
+  height: 390px;
+}
+
+.no-artist-cover-photo {
+  font-family: $fancy-font;
+  font-weight: 300;
+  line-height: 50px;
+  text-align: center;
+  padding-top: 170px;
+}
+
+.no-artist-cover-photo-yet {
+  font-size: 4em;
+}
+
+.upload-artist-cover-photo {
+  color: #212121;
+  font-size: 1.5em;
+  &:hover {
+    text-decoration: none;
+    color: $links;
+  }
+}
+
+.artist-show-nav {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: left;
+    li {
+      color: #212121;
+      font-family: $fancy-font;
+      padding: 10px 20px 10px 0;
+      position: relative;
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}
+
+.li-for-hover {
+  color: #212121;
+  padding-right: 11px;
+  &:hover {
+    color: #212121;
+    border-right: 1px solid #212121;
+    padding-right: 10px;
+  }
+}
+
+.artist-show-left {
+  width: 940px;
+  float: left;
+}
+
+.artist-show-right {
+  width: 200px;
+  float: right;
+}
+
+.artist-show-title {
+  font-family: $fancy-font;
+  font-size: 3em;
+  line-height: 48px;
+  padding: 10px 0;
+  margin-bottom: 25px;
+}
+
+/* ************ SIDEBAR ******************** */
+
+.artist-sidebar-container {
+}
+
+.artist-sidebar-folllow-button-container {
+  width: 200px;
+  margin: 20px auto 10px auto;
+}
+
+.artist-sidebar-follow-button {
+  width: 200px;
+  color: #212121;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-sidebar-follow-button-no-submit {
+  width: 200px;
+  color: #212121;
+  padding: 10px 69px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-sidebar-fans-follow {
+  padding: 10px 0;
+  font-family: $fancy-font;
+}
+
+.artist-sidebar-fans-number {
+  font-weight: 700;
+}
+
+.artist-sidebar-placeholder {
+  width: 200px;
+  height: 200px;
+  background-color: #212121;
+}
+
+.artist-sidebar-merch-container {
+  width: 200px;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.artist-sidebar-merch-image {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  font-family: $fancy-font;
+  font-size: 22px;
+  text-align: center;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border: 1px solid #212121;
+}
+
+.artist-sidebar-merch-name {
+  font-family: $fancy-font;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.artist-sidebar-merch-base-price {
+  font-family: $fancy-font;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.artist-sidebar-merch-buy-button-container {
+  width: 200px;
+  margin: 20px auto;
+}
+
+.artist-sidebar-merch-buy-button {
+  width: 200px;
+  color: #212121;
+  padding: 10px 81px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+/* ************ PROFILE PAGE ************ */
+
+.artist-show-profile {
+  padding: 0;
+}
+
+.artist-side-profile {
+  width: 270px;
+  display: inline-block;
+  float: left;
+}
+
+.no-artist-show-profile {
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 24px;
+}
+
+.no-artist-show-profile-button-container {
+  width: 220px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+}
+
+.no-artist-show-profile-button {
+  width: 220px;
+  color: #212121;
+  padding: 10px 15px 10px 15px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-show-profile-title {
+  font-family: $fancy-font;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.artist-show-profile-description {
+  font-family: $fancy-font;
+  padding-left: 10px;
+  text-align: justify;
+}
+
+/* ******************** MICROPOSTS ******************** */
+
+.artist-side-micropost {
+  width: 640px;
+  display: inline-block;
+  float: right;
+}
+
+.artist-micropost-field {
+  margin: 10px 0;
+}
+
+.artist-micropost-content-input {
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 629px;
+  max-width: 629px;
+  height: 44px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  display: inline-block
+}
+
+.artist-micropost-actions {
+  width: 220px;
+  margin-left: auto;
+  clear: both;
+  position: relative;
+}
+
+.submit-micropost-button {
+  width: 220px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-micropost-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  clear: both;
+}
+
+.artist-micropost-posted-by {
+  width: 640px;
+}
+
+.artist-posted-by {
+  font-family: $fancy-font;
+  font-size: 22px;
+  padding-right: 2px;
+}
+
+.artist-posted-time-ago {
+  font-family: $fancy-font;
+  font-size: 12px;
+}
+
+.artist-micropost-content {
+  font-family: $fancy-font;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  word-wrap: break-word;
+  text-align: justify;
+}
+
+.artist-micropost-total-votes {
+  font-family: $fancy-font;
+  font-size: 12px;
+  float: left;
+}
+
+.artist-micropost-social {
+  font-family: $fancy-font;
+  font-size: 12px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+.artist-micropost-comment-click {
+  cursor: pointer;
+}
+
+.artist-micropost-comments-container {
+  display: none;
+  width: 640px;
+  clear: both;
+}
+
+.artist-micropost-comments-name {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 10px;
+}
+.comment-artist-fan-posted-by {
+  font-weight: 700;
+}
+
+.artist-micropost-comments-content {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 20px 5px 20px;
+  text-align: justify;
+}
+
+.artist-micropost-comment-total-votes {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 10px 20px 10px;
+}
+
+.artist-micropost-comment-form-container {
+  width: 640px;
+}
+
+.artist-micropost-comment-field {
+  float: left;
+}
+
+.artist-micropost-comment-input {
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 505px;
+  max-width: 495px;
+  height: 38px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  display: inline-block
+}
+
+.artist-micropost-comment-actions {
+  width: 112px;
+  margin-left: auto;
+  float: right;
+  position: relative;
+}
+
+.artist-micropost-comment-post-button {
+  width: 112px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-no-microposts {
+  font-family: $fancy-font;
+  text-align: center;
+}
+
+/* ******************** ALBUMS ************************** */
+
+.artist-add-new-album-button-container {
+  width: 350px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-add-new-album-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 107px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-album-title-select {
+  padding: 10px;
+  font-family: $fancy-font;
+}
+
+.artist-album-title-option {
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+  font-family: $fancy-font;
+  font-size: 2em;
+}
+
+.artist-album-container {
+  width: 280px;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.artist-album-image {
+  width: 280px;
+  height: 280px;
+  line-height: 280px;
+  font-family: $fancy-font;
+  font-size: 22px;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #212121
+}
+
+.artist-album-name {
+  font-family: $fancy-font;
+  padding: 5px 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.artist-album-year {
+  font-family: $fancy-font;
+}
+
+.artist-album-indiv-container {
+  width: 940px;
+  clear: both;
+}
+
+.artist-album-indiv-image {
+  width: 450px;
+  height: 450px;
+  line-height: 450px;
+  font-family: $fancy-font;
+  font-size: 22px;
+  text-align: center;
+  float: left;
+  margin: 0 30px 50px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #212121
+}
+
+.artist-album-indiv-information {
+  width:460px;
+  float: right;
+  margin-bottom: 50px;
+}
+
+.artist-album-indiv-title {
+  font-family: $fancy-font;
+  font-size: 24px;
+}
+
+.artist-album-indiv-track-title {
+  font-family: $fancy-font;
+  font-size: 24px;
+  height: 26px;
+}
+
+.artist-album-indiv-year {
+  font-family: $fancy-font;
+  font-size: 16px;
+}
+
+.artist-album-indiv-info-title {
+  font-weight: 700;
+}
+
+.artist-album-indiv-info-left {
+  width: 455px;
+  margin-right: 30px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: left;
+}
+
+.artist-album-indiv-info-right {
+  width: 455px;
+  margin-bottom: 80px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: right;
+  display: none;
+}
+
+.artist-album-cover-art-click {
+  cursor: pointer;
+}
+
+.artist-album-lightbox {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  padding: 5px;
+  margin: 3vh 0 0 -455px;
+  background: #fff;
+  border: 1px solid #212121;
+  z-index: 1001;
+  display: none;
+}
+
+.artist-album-lightbox-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+/* *********************** TRACKS **************************** */
+
+.artist-add-new-track-button-container {
+  width: 350px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-add-new-track-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 39px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+   }
+}
+
+.artist-album-track-listing {
+  font-family: $fancy-font;
+}
+
+.artist-album-track-listing-title {
+  font-weight: 700;
+}
+
+.artist-album-track-indiv-info-title-left {
+  width: 455px;
+  margin-right: 30px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: left;
+}
+
+.artist-album-track-indiv-info-title-right {
+  width: 455px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: right;
+}
+
+.artist-album-track-indiv-info-left {
+  width: 455px;
+  margin-right: 30px;
+  margin-bottom: 80px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: left;
+}
+
+.artist-album-track-indiv-info-right {
+  width: 455px;
+  margin-bottom: 80px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: right;
+}
+
+.artist-album-track-listing-listing-tracks {
+
+}
+
+.artist-album-track-listing-album-page {
+  font-family: $fancy-font;
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+.artist-album-track-lyrics {
+  word-break: break-word;
+  white-space: pre-line;
+  margin-top: -25px;
+}
+
+.artist-album-track-listing-track-page-play {
+  display: inline-block;
+  width: 10px;
+}
+
+.artist-album-track-listing-mini-play {
+  font-size: 32px;
+  vertical-align: -4px;
+  cursor: pointer;
+}
+
+.artist-album-track-listing-mini-play-track-page {
+  font-size: 32px;
+  vertical-align: -4px;
+}
+
+.artist-album-track-listing-track-page-tracks {
+  display: inline-block;
+  padding: 0 10px
+}
+
+/* ********PLAYER********* */
+
+#audioplayer{
+  width: 460px;
+  height: 80px;
+  margin: 25px auto;
+}
+
+#pButton{
+    height: 80px;
+    width: 60px;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    float: left;
+    outline: none;
+}
+
+.play {
+  margin-top: -22px;
+  font-family: $fancy-font;
+  font-size: 72px;
+  &:after {
+    content: ">";
+  }
+}
+
+.pause {
+  margin-top: -15px;
+  font-weight: 900;
+  font-family: $fancy-font;
+  font-size: 35px;
+  &:after {
+    content: "| |";
+  }
+}
+
+#timeline{
+  width: 292px;
+  height: 5px;
+  margin-bottom: 4px;
+  display: inline-block;
+  background: rgba(0, 0, 0, 1);
+}
+
+#playhead{
+  width: 25px;
+  height: 15px;
+  margin-top: -5px;
+  background: rgba(0, 0, 0, 1);
+}
+
+#total_duration {
+  font-family: $fancy-font;
+  display: inline-block;
+  margin-top: 17px;
+  width: 40px;
+  padding-left: 10px;
+}
+
+#current_time {
+  font-family: $fancy-font;
+  display: inline-block;
+  margin-top: 17px;
+  width: 40px;
+  padding-right: 10px;
+}
+
+.artist-track-playlist-container {
+  width: 460px;
+  height: 100px;
+}
+
+.artist-album-track-url {
+  display: none;
+}
+
+/* ******************** VIDEOS *************************** */
+
+.artist-video-title {
+  padding: 10px;
+  font-family: $fancy-font;
+  font-size: 2em;
+}
+
+iframe {
+  width: 920px;
+  height: 518px;
+  margin: 8px;
+}
+
+.artist-video-description {
+  padding: 10px;
+  margin-bottom: 25px;
+  font-family: $fancy-font;
+}
+
+.artist-video-title-select {
+  padding: 10px;
+  font-family: $fancy-font;
+}
+
+.artist-video-title-option {
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+  font-family: $fancy-font;
+  font-size: 2em;
+}
+
+.artist-add-new-video-button-container {
+  width: 350px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-add-new-video-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 94px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+/******************** SHOWS *************************/
+
+.artist-add-new-show-button-container {
+  width: 350px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-add-new-show-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 95px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-show-title-select {
+  padding: 10px;
+  font-family: $fancy-font;
+}
+
+.artist-show-title-option {
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+  font-family: $fancy-font;
+  font-size: 2em;
+}
+
+.artist-show-table-bottom {
+  width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid #212121;
+  padding-bottom: 20px;
+}
+
+.artist-show-top-date {
+  width: 100px;
+  font-family: $fancy-font;
+  font-weight: 700;
+  padding: 10px 10px 20px 10px;
+}
+
+.artist-show-table-date {
+  width: 100px;
+  font-family: $fancy-font;
+  padding: 5px 10px 10px 10px;
+}
+
+.artist-show-top-venue {
+  width: 325px;
+  font-family: $fancy-font;
+  font-weight: 700;
+  padding: 10px 10px 20px 10px;
+}
+
+.artist-show-table-venue {
+  width: 325px;
+  font-family: $fancy-font;
+  padding: 5px 10px 10px 10px;
+}
+
+.artist-show-top-location {
+  width: 325px;
+  font-family: $fancy-font;
+  font-weight: 700;
+  padding: 10px 10px 20px 10px;
+}
+
+.artist-show-table-location {
+  width: 325px;
+  font-family: $fancy-font;
+  padding: 5px 10px 10px 10px;
+}
+
+.artist-show-top-ticket {
+  width: 100px;
+  font-family: $fancy-font;
+  font-weight: 700;
+  text-align: right;
+  padding: 10px 10px 20px 10px;
+}
+
+.artist-show-table-ticket {
+  width: 100px;
+  font-family: $fancy-font;
+  text-align: right;
+  padding: 5px 10px 10px 10px;
+}
+
+/* ******************** MERCH ************************ */
+
+.artist-add-new-merch-button-container {
+  width: 350px;
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-add-new-merch-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 121px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-merch-see-transactions-button-container {
+  width: 350px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+.artist-merch-see-transactions-button {
+  width: 350px;
+  color: #212121;
+  padding: 10px 94px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-merch-title-select {
+  padding: 10px;
+  font-family: $fancy-font;
+}
+
+.artist-merch-title-option {
+  text-align: center;
+  margin: 50px;
+  padding: 10px;
+  font-family: $fancy-font;
+  font-size: 2em;
+}
+
+.artist-merch-container {
+  width: 280px;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+.artist-merch-image {
+  width: 280px;
+  height: 280px;
+  line-height: 280px;
+  font-family: $fancy-font;
+  font-size: 22px;
+  text-align: center;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #212121
+}
+
+.artist-merch-name {
+  font-family: $fancy-font;
+  padding: 5px 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.artist-merch-base-price {
+  font-family: $fancy-font;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.artist-merch-buy-button-container {
+  width: 280px;
+  margin: 20px auto;
+}
+
+.artist-merch-buy-button {
+  width: 280px;
+  color: #212121;
+  padding: 10px 121px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 21px;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-merch-sold-out {
+  font-family: $fancy-font;
+  font-size: 21px;
+  color: red;
+  text-align: center;
+}
+
+.artist-merch-indiv-container {
+  width: 940px;
+  clear: both;
+}
+
+.artist-merch-indiv-image {
+  width: 450px;
+  height: 450px;
+  line-height: 450px;
+  font-family: $fancy-font;
+  font-size: 22px;
+  text-align: center;
+  float: left;
+  margin: 0 30px 50px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #212121
+}
+
+.artist-merch-indiv-inforrmation {
+  width:460px;
+  float: right;
+  margin-bottom: 50px;
+}
+
+.artist-merch-indiv-title {
+  font-family: $fancy-font;
+  font-size: 24px;
+}
+
+.artist-merch-indiv-about {
+  font-family: $fancy-font;
+  margin: 20px 0 0 0;
+}
+
+.artist-merch-indiv-description {
+  font-family: $fancy-font;
+  text-align: justify;
+  margin: 20px 0;
+}
+
+.artist-merch-indiv-pricing {
+  font-family: $fancy-font;
+  text-align: center;
+}
+
+.artist-merch-indv-pricing-title {
+  font-weight: 700;
+}
+
+.artist-merch-indv-pricing-price {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.artist-merch-indiv-buy-button-container {
+  width: 460px;
+  margin: 20px auto;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.artist-merch-indiv-buy-button {
+  min-width: 200px;
+  color: #212121;
+  padding: 10px 75px 10px 75px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 21px;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #1DE9B6;
+  }
+}
+
+.artist-merch-please-read-info {
+  font-family: $fancy-font;
+  font-size: 10px;
+  text-align: center;
+  color: red;
+}
+
+.artist-merch-indiv-info-title {
+  font-weight: 700;
+}
+
+.artist-merch-indiv-info-left {
+  width: 455px;
+  margin-right: 30px;
+  margin-bottom: 80px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: left;
+}
+
+.artist-merch-indiv-info-right {
+  width: 455px;
+  margin-bottom: 80px;
+  font-family: $fancy-font;
+  text-align: justify;
+  float: right;
+}
+
+.artist-merch-lightbox {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 500px;
+  margin: 20vh 0 0 -260px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #212121;
+  z-index: 1001;
+  display: none;
+}
+
+.artist-merch-lightbox-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+.artist-merch-indiv-lightbox {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 500px;
+  margin: 20vh 0 0 -260px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #212121;
+  z-index: 1001;
+  display: none;
+}
+
+.artist-merch-indiv-lightbox-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+.artist-merch-lightbox-title-left {
+  width: 485px;
+  font-family: $fancy-font;
+  display: inline-block;
+}
+
+.artist-merch-lightbox-title-right {
+  font-family: $fancy-font;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.artist-merch-lightbox-under-title {
+  width: 425px;
+  margin: 10px auto;
+  border-top: 1px solid #212121;
+}
+
+.artist-merch-purchase-price-field {
+  margin: 10px auto;
+  clear: both;
+}
+
+.artist-merch-lightbox-purchase-image-container {
+  margin-top: 10px;
+  clear: both;
+  height: 75px;
+}
+
+.artist-merch-lightbox-purchase-image-options {
+  display: inline-block;
+  padding: 0 9px;
+  height: 75px;
+}
+
+.artist-merch-purchase-must-be-fan {
+  font-family: $fancy-font;
+  color: #f00;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.artist-merch-image-click {
+  cursor: pointer;
+}
+
+.artist-merch-image-lightbox {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  padding: 5px;
+  margin: 3vh 0 0 -455px;
+  background: #fff;
+  border: 1px solid #212121;
+  z-index: 1001;
+  display: none;
+}
+
+.artist-merch-image-lightbox-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #212121;
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  z-index: 1000;
+  display: none;
+}
+
+/* ***********************TRANSACTIONS*********************** */
+
+.artist-transactions-table-bottom {
+  width: 995px;
+  margin: 0 auto;
+  border-top: 1px solid #212121;
+  padding-bottom: 20px;
+}
+
+.artist-transactions-top-merch-name {
+  width: 200px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-merch-name {
+  width: 200px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-sold-at {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-sold-at {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-fan-username {
+  width: 140px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-fan-username {
+  width: 140px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-quantity {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-quantity {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-base-price {
+  width: 40px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-top-shipping-price {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-top-pay-your-own-price {
+  width: 40px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-top-complete-price {
+  width: 55px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-base-price {
+  width: 40px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-table-shipping-price {
+  width: 50px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-table-pay-your-own-price {
+  width: 40px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-table-complete-price {
+  width: 55px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-street-address {
+  width: 365px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-street-address {
+  width: 365px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-transactions-top-is-shipped {
+  width: 55px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-transactions-table-is-shipped {
+  width: 55px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-fan-transactions-top-merch-name {
+  width: 200px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-fan-transactions-table-merch-name {
+  width: 200px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-fan-transactions-top-artist-name {
+  width: 180px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-fan-transactions-table-artist-name {
+  width: 180px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-fan-transactions-top-full-address {
+  width: 245px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-fan-transactions-table-full-address {
+  width: 245px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+.artist-fan-transactions-top-time-shipped {
+  width: 70px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 5px 20px 5px;
+}
+
+.artist-fan-transactions-table-time-shipped {
+  width: 70px;
+  font-family: $table-font;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 5px 5px 10px 5px;
+}
+
+/* ***********************FOLLOWERS*********************** */
+
+.artist-follower-page-container {
+  width: 210px;
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+.artist-follower-no-fan-profile-image {
+  font-family: $fancy-font;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 75px;
+}
+
+.artist-follower-page-profile-image {
+  width: 210px;
+  height: 210px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border: 1px solid #212121;
+}
+
+.artist-follower-page-fan-name {
+  font-family: $fancy-font;
+  padding: 5px 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.artist-follower-page-fan-following {
+  font-family: $fancy-font;
+}
+
+.artist-follower-page-fan-following-count {
+  font-weight: 700;
+}
+
+/* ********************* DISCOVER ***************** */
+
+.artist-discover-genre-title-click {
+  height: 45px;
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 10px 0;
+  margin: 0 10px 0 0;
+  display: inline-block;
+  margin-bottom: 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+  &:hover {
+    border-bottom: 1px solid #1DE9B6;
+  }
+}
+
+.artist-discover-genre-container-all-genres {
+  font-family: $fancy-font;
+}
+
+.artist-discover-genre-container {
+  font-family: $fancy-font;
+  display: none;
+}
+
+.genre-selected {
+  cursor: auto;
+  border-bottom: 1px solid #212121;
+}
+
+.artist-discover-artist-container {
+  width: 210px;
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+.artist-discover-artist-no-artist-profile-image {
+  font-family: $fancy-font;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 75px;
+}
+
+.artist-discover-artist-profile-image {
+  width: 210px;
+  height: 210px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border: 1px solid #212121;
+}
+
+.artist-discover-artist-artist-name {
+  font-family: $fancy-font;
+  font-size: 20px;
+  padding: 5px 0;
+  height: 50px;
+  overflow: hidden;
+}

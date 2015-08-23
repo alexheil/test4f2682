@@ -1,0 +1,38 @@
+<div class="container">
+  <% if @artist.artist_merch_purchases.any? %>
+  <table>
+    <tr>
+      <td class="artist-transactions-top-merch-name">merch name</td>
+      <td class="artist-transactions-top-fan-username">fan username</td>
+      <td class="artist-transactions-top-quantity">quantity</td>
+      <td class="artist-transactions-top-base-price">base price</td>
+      <td class="artist-transactions-top-shipping-price">shipping price</td>
+      <td class="artist-transactions-top-pay-your-own-price">paid more?</td>
+      <td class="artist-transactions-top-complete-price">complete price</td>
+      <td class="artist-transactions-top-street-address">ship to</td>
+      <td class="artist-transactions-top-sold-at">time sold</td>
+      <td class="artist-transactions-top-is-shipped">shipped?</td>
+    </tr>
+  </table>
+  <div class="artist-transactions-table-bottom">
+  </div>
+  <% @artist.artist_merch_purchases.each do |purchase| %>
+  <table>
+    <tr>
+      <td class="artist-transactions-table-merch-name"><%= link_to "#{purchase.merch_name}", artist_merch_path(purchase.artist_merch_id)  %></td>
+      <td class="artist-transactions-table-fan-username"><%= link_to "#{purchase.fan_username}", fan_path(purchase.fan_id) %></td>
+      <td class="artist-transactions-table-quantity"><%= purchase.quantity %></td>
+      <td class="artist-transactions-table-base-price"><%= purchase.base_price %></td>
+      <td class="artist-transactions-table-shipping-price"><%= purchase.shipping_price %></td>
+      <td class="artist-transactions-table-pay-your-own-price"><%= purchase.pay_your_own_price %></td>
+      <td class="artist-transactions-table-complete-price"><%= purchase.complete_price %></td>
+      <td class="artist-transactions-table-street-address"><%= purchase.full_name %> at <%= purchase.street_address %>, <%= purchase.city %>, <%= purchase.state %>, <%= purchase.zip_code %></td>
+      <td class="artist-transactions-table-sold-at"><%= purchase.created_at.strftime("%m.%d.%y %l:%M%P") %></td>
+      <td class="artist-transactions-table-is-shipped"><%= link_to "#{purchase.is_shipped}", artist_merch_transactions_edit_shipped_path(purchase) %></td>
+    </tr>
+  <% end %>
+  </table>
+  <% else %>
+  <p class="no-artist-show-profile"><%= "no one has purchased anything from you. go get some love!" %></p>
+  <% end %>
+</div>

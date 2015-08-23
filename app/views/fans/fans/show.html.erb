@@ -1,13 +1,131 @@
-<div>
-  <%= @fan.username %>
+<div class="container">
+  <%= render "fans/partials/fan_cover_image" %>
+
+  <div class="fan-side-profile">
+    <div class="fan-show-title">
+      <%= @fan.fan_name %>
+    </div>
+    <div class="artist-sidebar-fans-follow">
+      following <span class="artist-sidebar-fans-number">
+      <% if @fan.artists.count > 0 %>
+        <%= link_to @fan.artists.count, fan_following_path %>
+      <% else %>
+        <%= @fan.artists.count %>
+      <% end %>
+      </span>
+      <% if @fan.artists.count == 1 %>
+        artist
+      <% else %>
+        artists
+      <% end %>
+    </div>
+    <% if fan_signed_in? && @fan.id == current_fan.id && @fan.fan_profile.location == "" && @fan.fan_profile.biography == "" && @fan.fan_profile.website == "" %>
+    <p class="no-fan-show-profile">you do not have any profile information</p>
+    <div class="no-fan-show-profile-button-container">
+      <%= link_to "update your profile", edit_fan_profile_path, class: "no-fan-show-profile-button" %>
+    </div>
+    <% elsif @fan.fan_profile.location == "" && @fan.fan_profile.biography == "" && @fan.fan_profile.website == "" %>
+    <p class="no-fan-show-profile"><%= "#{@fan.fan_name} does not have any profile information yet" %></p>
+    <% end %>
+    <% if @fan.fan_profile.location == "" %>
+    <% else %>
+    <p class="fan-show-profile-title">location //</p>
+    <p class="fan-show-profile-description"><%= @fan.fan_profile.location %></p>
+    <% end %>
+    <% if @fan.fan_profile.website == "" %>
+    <% else %>
+    <p class="fan-show-profile-title">website //</p>
+    <p class="fan-show-profile-description"><%= link_to "#{@fan.fan_profile.website}", @fan.fan_profile.website %></p>
+    <% end %>
+    <% if @fan.fan_profile.biography == "" %>
+    <% else %>
+    <p class="fan-show-profile-title">biography //</p>
+    <p class="fan-show-profile-description"><%= @fan.fan_profile.biography %></p>
+    <% end %>
+  </div>
+
+  <div class="fan-content">
+
+    <div class="fan-artist-micropost-feed-title">
+      <%= @fan.fan_name %>'s status feed
+    </div>
+    <% if @fan.artist_microposts.any? %>
+      <% @fan.artist_microposts.take(20).each do |micropost| %>
+        <div class="fan-artist-micropost-feed">
+          <div class="fan-artist-micropost-posted-by">
+          <span class="fan-artist-posted-by"><%= link_to Artist.find(micropost.artist_id).artist_name, artist_path(micropost.artist_id) %></span><span class="fan-artist-posted-time-ago"> posted <%= time_ago_in_words(micropost.created_at) %> ago
+            <% if artist_signed_in? && micropost.artist_id == current_artist.id %>
+             // <%= link_to "delete post", artist_micropost_path(micropost), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %></span>
+            <% end %></span>
+          </div>
+          <div class="fan-artist-micropost-content">
+            <%= micropost.content %>
+          </div>
+          <div class="fan-artist-micropost-total-votes">
+            <%= link_to "∧", '#' %> <%= micropost.total_votes %> <%= link_to "∨" , '#' %>
+          </div>
+          <div class="fan-artist-micropost-social">
+            <%= micropost.artist_micropost_comments.count %> <a class="fan-artist-micropost-comment-click">comments</a>
+          </div>
+          <div class="fan-artist-micropost-comments-container">
+          <% micropost.artist_micropost_comments.each do |comment| %>
+            <div class="fan-artist-micropost-comments-name">
+              <span class="comment-artist-fan-posted-by"><%= link_to Artist.find(comment.artist_id).artist_name, artist_path(comment.artist_id) if comment.fan_id.nil?%><%= link_to Fan.find(comment.fan_id).fan_name, fan_path(comment.fan_id) if comment.artist_id.nil?  %></span> posted <%= time_ago_in_words(comment.created_at) %> ago
+              <% if (artist_signed_in? && micropost.artist_id == current_artist.id) || (artist_signed_in? && current_artist.id == comment.artist_id) || (fan_signed_in? && current_fan.id == comment.fan_id) %>
+             // <%= link_to "delete comment", artist_micropost_comment_path(comment), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+            <% end %>
+            </div>
+            <div class="fan-artist-micropost-comments-content">
+              <%= comment.content %>
+            </div>
+            <div class="fan-artist-micropost-comment-total-votes">
+              <%= link_to "∧", '#' %> <%= comment.total_votes %> <%= link_to "∨" , '#' %>
+            </div>
+          <% end %>
+            <%= form_for(micropost.artist_micropost_comments.build) do |f| %>
+            <div class="fan-artist-micropost-comment-form-container">
+              <div class="fan-artist-micropost-comment-field">
+                <%= f.hidden_field :artist_micropost_id %>
+                <%= f.text_area :content, placeholder: "leave a comment // tell someone they suck", class: "fan-artist-micropost-comment-input" %>
+              </div>
+              <div class="artist-micropost-comment-actions">
+                <%= f.submit "comment",  class: "fan-artist-micropost-comment-post-button" %>
+              </div>
+            </div>
+          </div>
+            <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      no microposts
+    <% end %>
+
+    <% if @fan.fan_profile.location == "" %>
+    <% else %>
+    <div class="fan-artist-show-feed-title">
+      shows coming to <%= @fan.fan_profile.location.split(",").first %> based on who <%= @fan.fan_name %> follows
+    </div>
+    <% if @fan.artist_shows.any? %>
+      <% @fan.artist_shows.select{ |show| show.show_location == @fan.fan_profile.location }.each do |show| %>
+        <div class="fan-artist-show-feed">
+          <div class="fan-artist-show-feed-artist-name">
+            <%= link_to Artist.find(show.artist_id).artist_name, artist_path(show.artist_id) %>
+          </div>
+          <div class="fan-artist-show-feed-date">
+            <%= show.show_month %>.<%= show.show_day %>.<%= show.show_year %>
+          </div>
+          <div class="fan-artist-show-feed-venue">
+            <%= show.show_venue %>
+          </div>
+          <div class="fan-artist-show-feed-tickets">
+            <%= link_to "tickets", show.show_ticket_url if show.show_ticket_url != "" %>
+          </div>
+        </div>
+      <% end %>
+      <% else %>
+      no shows coming to <%= @fan.fan_profile.location.split(",").first %>
+      <% end %>
+      <% end %>
+
 </div>
-<div>
-  <ul>
-    <li><%= link_to "timeline", "current_artist" %></li>
-    <li><%= link_to "music", "artist_music_path(@artist)" %></li>
-    <li><%= link_to "bio", "artist_bio_path(@artist)" %></li>
-  </ul>
-</div>
-<div>
-    <h3><%= @fan.email %></h3>
-</div>
+<%= render "partials/static_pages_footer" %>

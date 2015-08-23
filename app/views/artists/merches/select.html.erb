@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="artist-add-new-merch-button-container">
+      <%= link_to "add merch", new_artist_merch_path, class: "artist-add-new-merch-button" %>
+    </div>
+    <div class="artist-merch-see-transactions-button-container">
+      <%= link_to "see transactions", artist_merch_transactions_path, class: "artist-merch-see-transactions-button" %>
+    </div>
+    <% if @artist.artist_merches.any? %>
+    <p class="artist-merch-title-option">or click on a pile of crap ass merch below to edit it</p>
+      <% @artist.artist_merches.each do |merch| %>
+        <div class="artist-merch-title-select">
+          <%= link_to merch.merch_name, edit_artist_merch_path(merch) %> // <%= link_to "delete merch", artist_merch_path(merch), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -13,3 +13,87 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /* @media (max-width: 1200px) { } */
+
+/* MIXINS, VARIABLES, ETC... */
+
+$links: #1DE9B6;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
+$browser-width: 1170px;
+
+/* UNIVERSAL */
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.full-container {
+  width: 100%;
+  min-width: 1170px;
+}
+
+.container {
+  width: $browser-width;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing-container {
+  width: 700px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.landing-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body {
+  font-family: $normal-font;
+  font-size: 16px;
+  line-height: 26px;
+  color: #212121;
+}
+
+h2 {
+  font-family: $fancy-font;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: $fancy-font;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 300;
+}
+
+a {
+  color: $links;
+  text-decoration: none;
+  &:hover {
+    color: #A7FFEB;
+  }
+}
+
+p {
+  margin-bottom: 15px;
+  a {
+  text-decoration: none;
+  }
+}
+
+img {
+  border: 0;
+}
+
+.image-show {
+  margin: -1px 0 0 -1px;
+}

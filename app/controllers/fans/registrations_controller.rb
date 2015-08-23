@@ -8,9 +8,10 @@ class Fans::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @fan.create_fan_profile(profile_params)
+  end
 
   # GET /resource/edit
   # def edit
@@ -35,6 +36,12 @@ class Fans::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+
+     def profile_params
+      params.permit(:biography, :location, :website, :cover_image, :profile_image)
+    end
 
   # protected
 

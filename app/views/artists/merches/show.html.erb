@@ -1,0 +1,176 @@
+<%= provide(:title, "#{@artist.artist_name} | #{@merch.merch_name}") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+      <div class="artist-merch-indiv-container">
+        <div class="artist-merch-indiv-image">
+          <% if @merch.merch_image == "" %>
+            no image yet
+          <% else %>
+            <img class="image-show artist-merch-image-click" src="<%= @merch.merch_image %>"  width="450px" height="450px" />
+
+
+            <div class="artist-merch-image-lightbox-shadow">
+            </div>
+            <div class="artist-merch-image-lightbox">
+              <img src="<%= @merch.merch_image %>" width="900" height="900" />
+            </div>
+
+
+          <% end %>
+        </div>
+        <div class="artist-merch-indiv-inforrmation">
+          <div class="artist-merch-indiv-title">
+            <%= @merch.merch_name %>
+          </div>
+          <div class="artist-merch-indiv-about">
+            <%= @merch.about %>
+          </div>
+          <div class="artist-merch-indiv-description">
+            <%= @merch.merch_description unless @merch.merch_description.nil? %>
+          </div>
+          <div class="artist-merch-indiv-pricing">
+            <p class="artist-merch-indv-pricing-title">base price // shipping price // total price</p>
+            <p class="artist-merch-indv-pricing-price"><%= @merch.base_price %> // <%= @merch.shipping_price %> // <%= @merch.total_price %></p>
+          </div>
+          <div class="artist-merch-indiv-buy-button-container">
+          <% if @merch.quantity >= 1 %>
+            <%= link_to "buy", '#buy', class: "artist-merch-indiv-buy-button" %>
+          <% else %>
+            <div class="artist-merch-sold-out">
+              sold out!
+            </div>
+          <% end %>
+          </div>
+
+
+          <div class="artist-merch-indiv-lightbox-shadow">
+          </div>
+          <div class="artist-merch-indiv-lightbox">
+            <div class="artist-merch-lightbox-title-left">
+              <%= @merch.merch_name %>
+            </div>
+            <div class="artist-merch-lightbox-title-right">
+              X
+            </div>
+            <div class="artist-merch-lightbox-under-title">
+            </div>
+            <div class="artist-merch-lightbox-purchase-form">
+              <%= form_for(@merch.artist_merch_purchases.build) do |f| %>
+                <%= f.hidden_field :artist_merch_id %>
+                <%= f.hidden_field :artist_id %>
+                <%= f.hidden_field :fan_id %>
+                <div class="field">
+                  <%= f.label :quantity, "quantity", class: "artist-merch-purchase-label" %>
+                  <%= f.text_field :quantity, class: "artist-merch-purchase-text-field" %>
+                </div>
+                <div class="artist-merch-purchase-price-field">
+                  <span class="artist-merch-purchase-price-label-left">base price</span>
+                  <span class="artist-merch-purchase-price-label-right">// <strong><%= @merch.base_price %></strong></span>
+                </div>
+                <div class="artist-merch-purchase-price-field">
+                  <span class="artist-merch-purchase-price-label-left">shipping price</span>
+                  <span class="artist-merch-purchase-price-label-right">// <strong><%= @merch.shipping_price %></strong></span>
+                </div>
+                <div class="artist-merch-purchase-price-field">
+                  <span class="artist-merch-purchase-price-label-left">total price</span>
+                  <span class="artist-merch-purchase-price-label-right">// <strong><%= @merch.total_price %></strong></span>
+                </div>
+                <div class="field">
+                  <%= f.label :pay_your_own_price, "pay whatever?", class: "artist-merch-purchase-label" %>
+                  <%= f.text_field :pay_your_own_price, class: "artist-merch-purchase-text-field" %>
+                  <p class="artist-merch-purchase-text-under-field">optional // enter a dollar amount that you would like ADDED to your total price // currently <%= @merch.total_price %></p>
+                </div>
+                <% if fan_signed_in? == true %>
+                <div class="actions">
+                  <%= f.submit "checkout",  class: "submit-button" %>
+                </div>
+                <% else %>
+                <div class="artist-merch-purchase-must-be-fan">
+                  you must be <%= link_to "signed in", new_fan_session_path %> as a fan to make purchases
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="artist-merch-lightbox-purchase-image-container">
+              <div class="artist-merch-lightbox-purchase-image-options">
+                <img src="http://placehold.it/146x75/146" alt="BITCOINNNNSSSSS" />
+              </div>
+              <div class="artist-merch-lightbox-purchase-image-options">
+                <img src="http://placehold.it/146x75/146" alt="paypal - might as well pay with cash in mail" />
+              </div>
+              <div class="artist-merch-lightbox-purchase-image-options">
+                <img src="http://placehold.it/146x75/146" alt="credit card - oldschoolcool" />
+              </div>
+            </div>
+          </div>
+
+
+          <p class="artist-merch-please-read-info">please be sure to read <%= @artist.artist_name %>'s return policy and shipping info before purchasing</p>
+        </div>
+      </div>
+      <div class="artist-merch-indiv-container">
+        <div class="artist-merch-indiv-info-left">
+          <p class="artist-merch-indiv-info-title">return policy //</p>
+          <p><%= @merch.return_policy %></p>
+        </div>
+        <div class="artist-merch-indiv-info-right">
+          <p class="artist-merch-indiv-info-title">shipping info //</p>
+          <p><%= @merch.shipping_info %></p>
+        </div>
+      </div>
+      <% @artist.artist_merches.each do |merch| %>
+      <div class="artist-merch-container">
+        <div class="artist-merch-image">
+          <% if merch.merch_image == "" %>
+            no image yet
+          <% else %>
+          <%= link_to artist_merch_path(merch) do %>
+            <img class="image-show" src="<%= merch.merch_image %>" width="280px" height="280px" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-merch-name">
+          <%= link_to merch.merch_name, artist_merch_path(merch)  %>
+        </div>
+        <div class="artist-merch-base-price">
+          <%= merch.base_price %>
+        </div>
+        <div class="artist-merch-buy-button-container">
+        <% if merch.quantity >= 1 %>
+          <%= link_to "buy", '#', class: "artist-merch-buy-button" %>
+
+          <div class="artist-merch-lightbox-shadow">
+          </div>
+          <div class="artist-merch-lightbox">
+            <div class="artist-merch-lightbox-title-left">
+              <%= merch.merch_name %>
+            </div>
+            <div class="artist-merch-lightbox-title-right">
+              X
+            </div>
+            <div class="artist-merch-lightbox-under-title">
+            </div>
+            <div>
+              <%= merch.merch_description.truncate(120) %> <%= link_to "more", artist_merch_path(merch) %>
+            </div>
+          </div>
+
+
+        <% else %>
+          <div class="artist-merch-sold-out">
+            sold out!
+          </div>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

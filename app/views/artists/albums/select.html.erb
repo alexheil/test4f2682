@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="artist-add-new-album-button-container">
+      <%= link_to "add an album", new_artist_album_path, class: "artist-add-new-album-button" %>
+    </div>
+    <% if @artist.artist_albums.any? %>
+    <p class="artist-album-title-option">or click on an album below to edit it</p>
+      <% @artist.artist_albums.each do |album| %>
+        <div class="artist-album-title-select">
+          <%= link_to album.album_name, edit_artist_album_path(album) %> // <%= link_to "delete album", artist_album_path(album), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

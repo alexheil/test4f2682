@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>add a video</h3>
+    </div>
+    <%= form_for(@video, url: artist_videos_path(@artist)) do |f| %>
+      <div class="field">
+        <%= f.label :video_title, "title", class: "label" %>
+        <%= f.text_field :video_title, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :youtube_video_url, "youtube url", class: "label" %>
+        <%= f.text_field :youtube_video_url, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :video_description, "description", class: "label" %>
+        <%= f.text_area :video_description, class: "text-area" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "add video", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

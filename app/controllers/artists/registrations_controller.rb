@@ -3,15 +3,14 @@ class Artists::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super
-    @profile = @artist.build_artist_profile
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource
   def create
     super
-    @profile = @artist.create_artist_profile(profile_params)
+    @artist.create_artist_profile(profile_params)
   end
 
   # GET /resource/edit
@@ -41,7 +40,7 @@ class Artists::RegistrationsController < Devise::RegistrationsController
   private
 
     def profile_params
-      params.permit(:biography, :location, :genre, :members, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url)
+      params.permit(:biography, :location, :genre, :members, :facebook_url, :twitter_url, :youtube_url, :itunes_url, :amazon_url, :google_play_url, :record_label, :cover_image, :profile_image)
     end
 
   # protected

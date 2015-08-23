@@ -11,15 +11,82 @@ Rails.application.routes.draw do
   get 'sign_up' => 'static_pages#sign_up'
   get 'sign_in' => 'static_pages#sign_in'
 
-  ##### ARTIST ROUTES #####
+
+##### ARTIST ROUTES #####
 
   devise_for :artists, controllers: { sessions: "artists/sessions", passwords: "artists/passwords", registrations: "artists/registrations", confirmations: "artists/confirmations",  unlocks: "artists/unlocks"}
 
-  get 'artists/:id' => 'artists/artists#show', as: :artist
-  #resources :artists, controller: 'artists/artists', only: [:show]
-  get 'artists/:id/edit_profile' => 'artists/profiles#edit', as: :edit_profile
-  patch 'artists/:id/edit_profile' => 'artists/profiles#update'
-  put 'artists/:id/edit_profile' => 'artists/profiles#update'
+  resources :artists, controller: 'artists/artists', only: [:show, :index] do
+    member do
+      resource :profile, controller: 'artists/profiles', only: [:edit, :update], as: :artist_profile
+    end
+    member do
+      resources :albums, controller: 'artists/albums', only: [:index, :new, :create], as: :artist_albums
+    end
+    collection do
+      resources :albums, controller: 'artists/albums', only: [:show, :edit, :update, :destroy], as: :artist_albums do
+        member do
+          resources :tracks, controller: 'artists/tracks', only: [:new, :create], as: :artist_tracks
+        end
+        collection do
+          resources :tracks, controller: 'artists/tracks', only: [:show, :edit, :update, :destroy], as: :artist_tracks
+        end
+      end
+    end
+    member do
+      resources :videos, controller: 'artists/videos', only: [:index, :new, :create], as: :artist_videos
+    end
+    collection do
+      resources :videos, controller: 'artists/videos', only: [:edit, :update, :destroy], as: :artist_videos
+    end
+    member do
+      resources :shows, controller: 'artists/shows', only: [:index, :new, :create], as: :artist_shows
+    end
+    collection do
+      resources :shows, controller: 'artists/shows', only: [:edit, :update, :destroy], as: :artist_shows
+    end
+    member do
+      resources :merch, controller: 'artists/merches', only: [:index, :new, :create], as: :artist_merches
+    end
+    collection do
+      resources :merch, controller: 'artists/merches', only: [:show, :edit, :update, :destroy], as: :artist_merches do
+        member do
+          resources :purchases, controller: 'artists/merch_purchases', only: :create, as: :artist_merch_purchases
+        end
+        collection do
+          resources :purchases, controller: 'artists/merch_purchases', only: [:edit, :update, :destroy], as: :artist_merch_purchases
+        end
+      end
+    end
+    member do
+      resources :microposts, controller: 'artists/microposts', only: :create, as: :artist_microposts
+    end
+    collection do
+      resources :microposts, controller: 'artists/microposts', only: :destroy, as: :artist_microposts do
+        member do
+          resources :comments, controller: 'artists/comments', only: :create, as: :artist_micropost_comments
+        end
+        collection do
+          resources :comments, controller: 'artists/comments', only: :destroy, as: :artist_micropost_comments
+        end
+      end
+    end
+    member do
+      resources :relationships, only: :create
+    end
+    collection do
+      resources :relationships, only: :destroy
+    end
+  end
+
+  get 'artists/:id/select_albums' => 'artists/albums#select', as: :select_artist_album
+  get 'artists/:id/select_videos' => 'artists/videos#select', as: :select_artist_video
+  get 'artists/:id/select_shows' => 'artists/shows#select', as: :select_artist_show
+  get 'artists/:id/select_merch' => 'artists/merches#select', as: :select_artist_merch
+  get 'artists/:id/merch_transactions' => 'artists/merch_purchases#index', as: :artist_merch_transactions
+  get 'artists/merch/purchases/:id/edit_shipped' => 'artists/merch_purchases#edit_shipped', as: :artist_merch_transactions_edit_shipped
+  get 'artists/:id/followers' => 'artists/artists#followers', as: :artist_followers
+
 
   devise_scope :artist do
     get "sign_out", to: "artists/sessions#destroy"
@@ -29,12 +96,30 @@ Rails.application.routes.draw do
 
   devise_for :fans, controllers: { sessions: "fans/sessions", passwords: "fans/passwords", registrations: "fans/registrations", confirmations: "fans/confirmations",  unlocks: "fans/unlocks"}
 
-   get 'fans/:id' => 'fans/fans#show', as: :fan
-   #resources :fans, controller: 'fans/fans', only: [:show]
+  resources :fans, controller: 'fans/fans', only: :show do
+    member do
+      resource :profile, controller: 'fans/profiles', only: [:edit, :update], as: :fan_profile
+    end
+  end
+
+  get 'fans/:id/purchase_history' => 'fans/merch_purchases#index', as: :fan_purchase_history
+  get 'fans/:id/following' => 'fans/fans#following', as: :fan_following
 
   devise_scope :fan do
     get "sign_out", to: "fans/sessions#destroy"
   end
+
+
+
+
+
+
+
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,45 @@
+<div class="container">
+  <%= render "fans/partials/fan_cover_image" %>
+  <div class="fan-is-following-title">
+    <%= @fan.fan_name %> is following //
+  </div>
+
+  <% if @fan.artists.any? %>
+    <% @fan.artists.each do |artist| %>
+        <div class="fan-artist-following-page-container">
+          <div class="fan-artist-following-page-profile-image">
+            <% if artist.artist_profile.profile_image == "" %>
+            <div class="fan-artist-following-page-no-artist-profile-image">
+              <% if artist_signed_in? && artist.id == current_artist.id %>
+              <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+              <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+              <% else %>
+              <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+              <% end %>
+              </div>
+            <% else %>
+            <%= link_to artist_path(artist) do %>
+              <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+            <% end %>
+            <% end %>
+          </div>
+          <div class="fan-artist-following-page-artist-name">
+            <%= link_to "#{artist.artist_name}", artist_path(artist) %>
+          </div>
+          <div class="fan-artist-following-page-genre">
+           <%= artist.artist_profile.genre %>
+          </div>
+          <div class="fan-artist-following-page-artist-followers">
+            has <span class="fan-artist-following-page-artist-followers-count"><%= link_to artist.fans.count - 1, artist_followers_path(artist) %></span> other
+            <% if artist.fans.count - 1 == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+
+</div>
+<%= render "partials/static_pages_footer" %>

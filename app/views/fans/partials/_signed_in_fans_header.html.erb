@@ -1,0 +1,14 @@
+<header class="full-container artist-dash-nav-background">
+  <div class="container">
+    <nav class="artist-dash-nav">
+    <%= link_to "#{current_fan.fan_name}'s dashboard", current_fan, class: "artist-dash-site-title" %>
+        <ul>
+          <li><%= link_to "following", fan_following_path(current_fan), class: "artist-dash-links" %></li>
+          <li><%= link_to "purchases", fan_purchase_history_path(current_fan), class: "artist-dash-links" %></li>
+          <li><%= link_to "profile", edit_fan_profile_path(current_fan), class: "artist-dash-links" %></li>
+          <li><%= link_to "settings", edit_fan_registration_path, class: "artist-dash-links" %></li>
+          <li><%= link_to "sign out", sign_out_path, class: "artist-dash-links" %></li>
+        </ul>
+    </nav>
+  </div>
+</header>

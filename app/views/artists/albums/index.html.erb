@@ -1,0 +1,37 @@
+<%= provide(:title, "#{@artist.artist_name} | Albums") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+    <% if @artist.artist_albums.any? %>
+    <% @artist.artist_albums.each do |album| %>
+      <div class="artist-album-container">
+        <div class="artist-album-image">
+          <%= link_to artist_album_path(album) do %>
+            <img class="image-show" src="<%= album.album_cover_art_url %>" width="280" height="280" />
+          <% end %>
+        </div>
+        <div class="artist-album-name">
+          <%= link_to album.album_name, artist_album_path(album)  %>
+        </div>
+        <div class="artist-album-year">
+          <%= album.album_year %>
+        </div>
+          <% if @artist == current_artist %>
+            <div>
+              <%= link_to 'edit', edit_artist_album_path(album) %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
+    <% else %>
+      <p class="no-artist-show-profile"><%= "#{@artist.artist_name} hasn't uploaded any albums yet" %></p>
+    <% end %>
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

@@ -7,4 +7,8 @@ class Fans::FansController < ApplicationController
     @fan = Fan.find(params[:id])
   end
 
+  def following
+    @fan = Fan.find(params[:id])
+  end
+
 end

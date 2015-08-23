@@ -7,6 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if artist_signed_in? %>
+    <%=  render "artists/partials/signed_in_artists_header" %>
+  <% elsif fan_signed_in? %>
+    <%=  render "fans/partials/signed_in_fans_header" %>
+  <% end %>
     <%= yield %>
 </body>
 </html>

@@ -4,110 +4,39 @@
 
 /* MIXINS, VARIABLES, ETC... */
 
-$links: #4f2682;
+$links: #1DE9B6;
 $normal-font: Georgia, "Times New Roman", Times, serif;
-$fancy-font: "Open Sans Light", Helvetica, sans-serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
 $browser-width: 1170px;
 
-/* UNIVERSAL */
+/* *************** UNIVERSAL STATIC PAGES ************************ */
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.full-container {
-  width: 100%;
-}
-
-.container {
-  width: $browser-width;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.landing-container {
-  width: 700px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.landing-content {
+.static-pages-title {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-body {
-  font-family: $normal-font;
-  font-size: 16px;
-  line-height: 26px;
-  color: #000;
-}
+/* ***************************** HOME ******************************* */
 
-h2 {
+.jumbotron {
+  width: 1170px;
+  height: 510px;
+  border: 1px solid #212121;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  margin: 50px auto;
+  text-align: center;
+  line-height: 510px;
   font-family: $fancy-font;
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: 300;
+  font-weight: 100;
+  font-size: 225px;
 }
 
-h3 {
+.home-mini-title {
   font-family: $fancy-font;
-  font-size: 30px;
-  line-height: 40px;
-  font-weight: 300;
-}
-
-a {
-  color: $links;
-  text-decoration: none;
-  &:hover {
-    color: #fff;
-  }
-}
-
-p {
-  margin-bottom: 15px;
-  a {
-  text-decoration: none;
-    &:hover {
-    text-decoration: underline;
-    }
-  }
-}
-
-/* HEADER */
-
-.site-title {
-  float: left;
-  font-size: 1.7em;
-  color: $links;
-  padding: 10px;
-  font-family: $fancy-font;
-  &:hover {
-    text-decoration: none;
-    color: #000;
-  }
-}
-
-.nav-background {
-  background-color: #e5e5e5;
-}
-
-.nav {
-  width: 100%;
-  display: inline-block;
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      font-family: $fancy-font;
-      padding: 10px;
-      position: relative;
-      float: left;
-      margin-left: 15px;
-    }
-  }
+  margin: 25px 0;
+  font-weight: 700;
 }
 
 /* SIGNU UP PAGE */
@@ -118,6 +47,7 @@ p {
   font-size: 3em;
   text-align: center;
   font-family: $fancy-font;
+  font-weight: 300;
 }
 
 @mixin signup-text {
@@ -127,54 +57,46 @@ p {
   text-align: center;
   margin-top: 25px;
   margin-bottom: 100px;
-  border: 2px solid #000;
+  border: 2px solid #212121;
   font-size: 3em;
   font-family: $fancy-font;
-  color: #000;
+  font-weight: 300;
+  color: #212121;
 }
 
-.signup-text {
+.signup-text-left {
   @include signup-text;
   margin-left: 125px;
   float: left;
   &:hover {
-    background-color: #000;
-    color: #4f2682;
+    background-color: #212121;
+    color: #1DE9B6;
   }
 }
 
-.signup-text2 {
+.signup-text-right {
   @include signup-text;
   margin-right: 125px;
   float: right;
   &:hover {
-    background-color: #000;
-    color: #4f2682;
+    background-color: #212121;
+    color: #1DE9B6;
   }
 }
 
-/* FOOTER */
+/* **************** FAQ ******************* */
 
-.full-footer-container {
-  width: 100%;
-  clear: both;
-}
-
-.footer {
-  width: 100%;
-  display: inline-block;
+.faq-mini-headlines {
   font-family: $fancy-font;
-  span {
-    float: left;
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      position: relative;
-      float: left;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
-  }
+  font-size: 20px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.faq-minier-headlines {
+  font-family: $fancy-font;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 15px;
 }

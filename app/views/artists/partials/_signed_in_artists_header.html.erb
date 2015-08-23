@@ -1,0 +1,16 @@
+<header class="full-container artist-dash-nav-background">
+  <div class="container">
+    <nav class="artist-dash-nav">
+    <%= link_to "#{current_artist.artist_name}'s dashboard", current_artist, class: "artist-dash-site-title" %>
+        <ul>
+          <li><%= link_to "music", select_artist_album_path(current_artist), class: "artist-dash-links" %></li>
+          <li><%= link_to "merch", select_artist_merch_path(current_artist), class: "artist-dash-links" %></li>
+          <li><%= link_to "videos", select_artist_video_path(current_artist), class: "artist-dash-links" %></li>
+          <li><%= link_to "shows", select_artist_show_path(current_artist), class: "artist-dash-links" %></li>
+          <li><%= link_to "profile", edit_artist_profile_path(current_artist), class: "artist-dash-links" %></li>
+          <li><%= link_to "settings", edit_artist_registration_path, class: "artist-dash-links" %></li>
+          <li><%= link_to "sign out", sign_out_path, class: "artist-dash-links" %></li>
+        </ul>
+    </nav>
+  </div>
+</header>

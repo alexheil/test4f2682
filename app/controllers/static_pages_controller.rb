@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @artists = Artist.all
   end
 
   def privacy
@@ -21,8 +22,14 @@ class StaticPagesController < ApplicationController
   end
 
   def sign_up
+    if artist_signed_in? || fan_signed_in?
+      redirect_to root_url
+    end
   end
 
   def sign_in
+    if artist_signed_in? || fan_signed_in?
+      redirect_to root_url
+    end
   end
 end

@@ -1,7 +1,13 @@
 /* VARIABLES */
 
 $normal-font: Georgia, "Times New Roman", Times, serif;
-$fancy-font: "Open Sans Light", Helvetica, sans-serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
+
+/* button transition
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  -o-transition: .3s;
+*/
 
 /* ACTUAL CSS */
 
@@ -13,12 +19,13 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
 .field {
   margin-top: 10px;
   margin-bottom: 10px;
+  clear: both;
 }
 
 .label {
   width: 225px;
   margin-top: 5px;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
   text-align: right;
   font-family: $fancy-font;
   font-size: 1.3em;
@@ -34,9 +41,24 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
   font-size: 16px;
   width: 450px;
   padding: 5px;
-  border-right: 1px solid #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  float: right;
+  display: inline-block
+}
+
+select {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 461px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
   border-left: none;
   float: right;
   display: inline-block
@@ -47,14 +69,50 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
   margin-bottom: 5px;
   font-family: $fancy-font;
   font-size: 16px;
+  max-width: 450px;
   width: 450px;
-  height: 150px;
+  height: 66px;
   padding: 5px;
-  border-right: 1px solid #000;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
   border-left: none;
   float: right;
+  display: inline-block;
+  word-break: break-word;
+}
+
+.date-field {
+  width: 461px;
+  float: right;
+}
+
+.dates {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 126px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  display: inline-block
+}
+
+.dates-margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 21px;
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 126px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
   display: inline-block
 }
 
@@ -69,7 +127,8 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
 }
 
 .text-under-profile {
-  margin-left: 240px;
+  margin-top: 10px;
+  text-align: center;
   font-family: $fancy-font;
   margin-bottom: 80px;
 }
@@ -99,60 +158,18 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
   position: relative;
 }
 
-.profile-actions {
-  width: 460px;
-  padding-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  clear: both;
-  position: relative;
-  margin-bottom: 60px;
-}
-
-.skip-button {
-  width: 220px;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
-  font-family: $fancy-font;
-  font-size: 1.3em;
-  border: 1px solid #000;
-  background-color: #fff;
-  cursor: pointer;
-  float: left;
-  &:hover {
-     background-color: #000;
-     color: #4f2682;
-  }
-}
-
-.profile-button {
-  width: 220px;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
-  font-family: $fancy-font;
-  font-size: 1.3em;
-  border: 1px solid #000;
-  background-color: #fff;
-  cursor: pointer;
-  float: right;
-  &:hover {
-     background-color: #000;
-     color: #4f2682;
-  }
-}
-
 .submit-button {
   width: 220px;
   padding: 10px 0px 10px 0px;
   text-align: center;
   font-family: $fancy-font;
   font-size: 1.3em;
-  border: 1px solid #000;
+  border: 1px solid #212121;
   background-color: #fff;
   cursor: pointer;
   &:hover {
-     background-color: #000;
-     color: #4f2682;
+     background-color: #212121;
+     color: #1DE9B6;
   }
 }
 
@@ -166,11 +183,80 @@ $fancy-font: "Open Sans Light", Helvetica, sans-serif;
 }
 
 #error_explanation {
-  color: red;
+  color: #f00;
   font-family: $fancy-font;
   ul {
       padding: 5px 0 5px 0;
       list-style: none;
       line-height: 30px;
   }
+}
+
+
+/* ****************** ARTIST MERCH PURCHASE *****************/
+
+.artist-merch-purchase-label {
+  width: 133px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: right;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  line-height: 1.7em;
+  float: left;
+  display: inline-block;
+}
+
+.artist-merch-purchase-text-field {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 345px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  float: right;
+  display: inline-block;
+}
+
+.artist-merch-purchase-text-under-field {
+  margin-left: 144px;
+  font-size: 16px;
+  font-family: $fancy-font;
+}
+
+.artist-merch-purchase-price-field {
+  margin: 5px auto;
+  clear: both;
+}
+
+.artist-merch-purchase-price-label-left {
+  width: 133px;
+  text-align: right;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  padding-left: 10px;
+  line-height: 1.7em;
+  display: inline-block;
+}
+
+.artist-merch-purchase-price-label-right {
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  width: 345px;
+  display: inline-block;
+}
+
+.artist-merch-purchase-filled-in-right {
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  width: 345px;
+  margin-top: 5px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+  line-height: 1.7em;
 }

@@ -1,0 +1,353 @@
+/* ************ MIXINS, VARIABLES, ETC... ************ */
+
+$links: #1DE9B6;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
+$browser-width: 1170px;
+
+/* ************ COVER PHOTO & NAV ************ */
+
+.fan-cover-image {
+  width:1170px;
+  height: 180px;
+}
+
+.fan-no-cover-image {
+  font-family: $fancy-font;
+  font-weight: 300;
+  line-height: 50px;
+  text-align: right;
+  padding: 55px 0 0 300px;
+}
+
+.fan-no-cover-image-yet {
+  font-size: 4em;
+  margin-bottom: 7px;
+}
+
+.upload-fan-cover-image {
+  color: #212121;
+  font-size: 1.5em;
+  &:hover {
+    text-decoration: none;
+    color: $links;
+  }
+}
+
+.fan-profile-image {
+  width: 300px;
+  height: 300px;
+  z-index: 2;
+  margin-top: -125px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border: 1px solid #212121;
+}
+
+.fan-no-profile-image {
+  font-family: $fancy-font;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 125px;
+}
+
+.fan-no-profile-image-yet {
+}
+
+.upload-fan-profile-image {
+  color: #212121;
+  &:hover {
+    text-decoration: none;
+    color: $links;
+  }
+}
+
+.fan-show-title {
+  font-family: $fancy-font;
+  font-size: 24px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.fan-show-profile {
+  padding: 0;
+}
+
+.fan-side-profile {
+  width: 325px;
+  display: inline-block;
+  float: left;
+}
+
+.no-fan-show-profile {
+  margin-top: 40px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.5em;
+}
+
+.no-fan-show-profile-button-container {
+  width: 220px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+}
+
+.no-fan-show-profile-button {
+  width: 220px;
+  color: #212121;
+  padding: 10px 15px 10px 15px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #4f2682;
+  }
+}
+
+.fan-show-profile-title {
+  font-family: $fancy-font;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.fan-show-profile-description {
+  font-family: $fancy-font;
+  padding-left: 10px;
+  text-align: justify;
+}
+
+.fan-content {
+  width: 815px;
+  float: right;
+}
+
+/* *******************FOLLOWING*********************** */
+
+.fan-is-following-title {
+  font-family: $fancy-font;
+  font-size: 24px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.fan-artist-following-page-container {
+  width: 210px;
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+.artist-follower-no-fan-profile-image {
+  font-family: $fancy-font;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 90px;
+}
+
+.fan-artist-following-page-no-artist-profile-image {
+  font-family: $fancy-font;
+  line-height: 15px;
+  text-align: center;
+  padding-top: 90px;
+}
+
+.fan-artist-following-page-profile-image {
+  width: 210px;
+  height: 210px;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+  border: 1px solid #212121;
+}
+
+.fan-artist-following-page-artist-name {
+  width: 210px;
+  font-family: $fancy-font;
+  padding: 5px 0;
+  height: 50px;
+  overflow: hidden;
+}
+
+.fan-artist-following-page-genre {
+  font-family: $fancy-font;
+  height: 26px;
+}
+
+.fan-artist-following-page-artist-followers {
+  font-family: $fancy-font;
+  height: 26px;
+}
+
+.fan-artist-following-page-artist-followers-count {
+  font-weight: 700;
+}
+
+/* ************************** FAN FEED ***************** */
+
+.fan-artist-show-feed-title {
+  padding: 10px 0;
+  font-family: $fancy-font;
+  font-weight: 700;
+  clear: both;
+  margin-top: 100px;
+}
+
+.fan-artist-show-feed {
+  padding: 10px 0;
+  font-family: $fancy-font;
+}
+
+.fan-artist-show-feed-artist-name {
+  width: 300px;
+  display: inline-block;
+  padding: 0 10px 0 0;
+}
+
+.fan-artist-show-feed-date {
+  width: 100px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.fan-artist-show-feed-venue {
+  width: 285px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.fan-artist-show-feed-tickets {
+  width: 50px;
+  display: inline-block;
+  padding: 0 0 0 10px;
+}
+
+.fan-artist-micropost-feed-title {
+  padding: 10px 0;
+  font-family: $fancy-font;
+  font-weight: 700;
+  clear: both;
+}
+
+.fan-artist-micropost-feed {
+  padding: 10px 0;
+  font-family: $fancy-font;
+  clear: both;
+}
+
+.fan-artist-micropost-posted-by {
+  width: 815px;
+}
+
+.fan-artist-posted-by {
+  font-family: $fancy-font;
+  font-size: 22px;
+  padding-right: 2px;
+}
+
+.fan-artist-posted-time-ago {
+  font-family: $fancy-font;
+  font-size: 12px;
+}
+
+.fan-artist-micropost-content {
+  font-family: $fancy-font;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  word-wrap: break-word;
+  text-align: justify;
+}
+
+.fan-artist-micropost-total-votes {
+  font-family: $fancy-font;
+  font-size: 12px;
+  float: left;
+}
+
+.fan-artist-micropost-social {
+  font-family: $fancy-font;
+  font-size: 12px;
+  margin-bottom: 10px;
+  float: right;
+}
+
+.fan-artist-micropost-comment-click {
+  cursor: pointer;
+}
+
+.fan-artist-micropost-comments-container {
+  display: none;
+  width: 815px;
+  clear: both;
+}
+
+.fan-artist-micropost-comments-name {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 10px;
+}
+
+.fan-artist-micropost-comments-content {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 20px 5px 20px;
+  text-align: justify;
+}
+
+.fan-artist-micropost-comment-total-votes {
+  font-family: $fancy-font;
+  font-size: 12px;
+  padding: 0px 10px 20px 10px;
+}
+
+.fan-artist-micropost-comment-form-container {
+  width: 815px;
+}
+
+.fan-artist-micropost-comment-field {
+  float: left;
+}
+
+.fan-artist-micropost-comment-input {
+  font-family: $fancy-font;
+  font-size: 16px;
+  width: 680px;
+  max-width: 670px;
+  height: 38px;
+  padding: 5px;
+  border-right: 1px solid #212121;
+  border-top: 1px solid #212121;
+  border-bottom: 1px solid #212121;
+  border-left: none;
+  display: inline-block
+}
+
+.fan-artist-micropost-comment-actions {
+  width: 112px;
+  margin-left: auto;
+  float: right;
+  position: relative;
+}
+
+.fan-artist-micropost-comment-post-button {
+  width: 112px;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  font-family: $fancy-font;
+  font-size: 1.3em;
+  border: 1px solid #212121;
+  background-color: #fff;
+  cursor: pointer;
+  &:hover {
+     background-color: #212121;
+     color: #4f2682;
+  }
+}

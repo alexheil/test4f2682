@@ -1,0 +1,64 @@
+<%= provide(:title, "#{@artist.artist_name} | Merch") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+    <% if @artist.artist_merches.any? %>
+    <% @artist.artist_merches.each do |merch| %>
+      <div class="artist-merch-container">
+        <div class="artist-merch-image">
+          <% if merch.merch_image == "" %>
+            no image yet
+          <% else %>
+          <%= link_to artist_merch_path(merch) do %>
+            <img class="image-show" src="<%= merch.merch_image %>" width="280px" height="280px" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-merch-name">
+          <%= link_to merch.merch_name, artist_merch_path(merch)  %>
+        </div>
+        <div class="artist-merch-base-price">
+          <%= merch.base_price %>
+        </div>
+        <div class="artist-merch-buy-button-container">
+        <% if merch.quantity >= 1 %>
+          <%= link_to "buy", '#buy', class: "artist-merch-buy-button" %>
+
+
+          <div class="artist-merch-lightbox-shadow">
+          </div>
+          <div class="artist-merch-lightbox">
+            <div class="artist-merch-lightbox-title-left">
+              <%= merch.merch_name %>
+            </div>
+            <div class="artist-merch-lightbox-title-right">
+              X
+            </div>
+            <div class="artist-merch-lightbox-under-title">
+            </div>
+            <div>
+              <%= merch.merch_description.truncate(120) %> <%= link_to "more", artist_merch_path(merch) %>
+            </div>
+          </div>
+
+
+        <% else %>
+          <div class="artist-merch-sold-out">
+            sold out!
+          </div>
+        <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <p class="no-artist-show-profile"><%= "#{@artist.artist_name} hasn't uploaded any merch yet" %></p>
+    <% end %>
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

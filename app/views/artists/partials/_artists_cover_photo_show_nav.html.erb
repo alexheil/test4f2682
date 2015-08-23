@@ -1,0 +1,31 @@
+<div class="artist-cover-photo">
+  <% if @artist.artist_profile.cover_image == "" %>
+  <div class="no-artist-cover-photo">
+    <% if artist_signed_in? && @artist.id == current_artist.id %>
+    <p class="no-artist-cover-photo-yet">you do not have a cover photo yet</p>
+    <p><%= link_to "upload a cover photo", '#', class: "upload-artist-cover-photo" %></p>
+    <% else %>
+    <p class="no-artist-cover-photo-yet"><%= "#{@artist.artist_name} hasn't uploaded a cover photo yet" %></p>
+    <% end %>
+  </div>
+  <% else %>
+    <img src="<%= @artist.artist_profile.cover_image %>" width="1170" height="390" />
+  <% end %>
+</div>
+<nav class="artist-show-nav">
+  <ul>
+    <li><%= link_to "artist", artist_path(@artist), class: "li-for-hover" %></li>
+    <% if @artist.artist_albums.any? %>
+      <li><%= link_to "music", artist_albums_path(@artist), class: "li-for-hover" %></li>
+    <% end %>
+    <% if @artist.artist_merches.any? %>
+      <li><%= link_to "merch", artist_merches_path(@artist), class: "li-for-hover" %></li>
+    <% end %>
+    <% if @artist.artist_videos.any? %>
+      <li><%= link_to "videos", artist_videos_path(@artist), class: "li-for-hover" %></li>
+    <% end %>
+    <% if @artist.artist_shows.any? %>
+      <li><%= link_to "shows", artist_shows_path(@artist), class: "li-for-hover" %></li>
+    <% end %>
+  </ul>
+</nav>

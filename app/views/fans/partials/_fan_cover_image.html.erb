@@ -1,0 +1,28 @@
+  <div class="fan-cover-image">
+    <% if @fan.fan_profile.cover_image == "" %>
+    <div class="fan-no-cover-image">
+      <% if fan_signed_in? && @fan.id == current_fan.id %>
+      <p class="fan-no-cover-image-yet">you do not have a cover photo yet</p>
+      <p><%= link_to "upload a cover image", edit_fan_profile_path(current_fan), class: "upload-fan-cover-image" %></p>
+      <% else %>
+      <p class="fan-no-cover-image-yet"><%= "#{@fan.fan_name} hasn't uploaded a cover image yet" %></p>
+      <% end %>
+    </div>
+    <% else %>
+      <img src="<%= @fan.fan_profile.cover_image %>" width="1170" height="180" />
+    <% end %>
+  </div>
+  <div class="fan-profile-image">
+    <% if @fan.fan_profile.profile_image == "" %>
+    <div class="fan-no-profile-image">
+      <% if fan_signed_in? && @fan.id == current_fan.id %>
+      <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+      <p><%= link_to "upload a profile image", edit_fan_profile_path(current_fan), class: "upload-fan-profile-image" %></p>
+      <% else %>
+      <p class="fan-no-profile-image-yet"><%= "#{@fan.fan_name} hasn't uploaded a profile image yet" %></p>
+      <% end %>
+    </div>
+    <% else %>
+      <img class="image-show" src="<%= @fan.fan_profile.profile_image %>" width="300" height="300" />
+    <% end %>
+  </div>

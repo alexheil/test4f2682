@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>add a show</h3>
+    </div>
+    <%= form_for(@show, url: artist_shows_path(@artist)) do |f| %>
+      <div class="field">
+        <%= f.label :show_year, "month // day // year", class: "label" %>
+      </div>
+      <div class="date-field">
+        <%= f.text_field :show_month, class: "dates" %>
+        <%= f.text_field :show_day, class: "dates-margin" %>
+        <%= f.text_field :show_year, class: "dates-margin" %>
+      </div>
+      <div class="field">
+        <%= f.label :show_location, "location", class: "label" %>
+        <%= f.text_field :show_location, class: "text-field" %>
+        <p class="text-under-field">city, state if in the US // city, country if international</p>
+      </div>
+      <div class="field">
+        <%= f.label :show_venue, "venue", class: "label" %>
+        <%= f.text_field :show_venue, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :show_ticket_url, "ticket url", class: "label" %>
+        <%= f.text_field :show_ticket_url, class: "text-field" %>
+        <p class="text-under-field">optional // but we make 25 cents for every ticket we sell through you via TICKETFLY, so please add one if you can because I like bacon too much to not have enough money to buy it</p>
+      </div>
+      <div class="actions">
+        <%= f.submit "add show", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

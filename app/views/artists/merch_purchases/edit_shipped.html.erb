@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>has this item been shipped?</h3>
+    </div>
+    <%= form_for(@purchase, url: artist_merch_purchase_path) do |f| %>
+
+      <div class="field">
+        <%= f.label :is_shipped, "shipped?", class: "label" %>
+        <%= f.select :is_shipped, options_for_select(["false", "true"])%>
+        <p class="text-under-field"> true - item is shipped // false - item is not shipped</p>
+      </div>
+      <div class="actions">
+        <%= f.submit "mark", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

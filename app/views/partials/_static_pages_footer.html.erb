@@ -1,28 +1,32 @@
-<footer class="full-footer-container">
+<footer class="static-full-footer-container">
   <div class="container">
-    <div class="footer">
+    <nav class="footer">
       <span>
-        copyright 2010-2014 project4f2682
+        <%= link_to "noisaea //", root_path %>
       </span>
-      <nav>
-        <ul>
-          <li> | </li>
-          <li><%= link_to "copyright", copyright_path %></li>
-          <li> | </li>
-          <li><%= link_to "privacy", privacy_path %></li>
-          <li> | </li>
-          <li><%= link_to "terms of use", terms_of_use_path %></li>
-          <li> | </li>
-          <li><%= link_to "contact", contact_path %></li>
-          <li> | </li>
-          <li><%= link_to "about", about_path %></li>
-          <li> | </li>
-          <li><%= link_to "faq", faq_path %></li>
-          <li> | </li>
-          <li><%= link_to "blog", '#' %></li>
-          <li> | </li>
-        </ul>
-      </nav>
-    </div>
+      <ul>
+        <li> // </li>
+        <li><%= link_to "copyright", copyright_path %></li>
+        <li> // </li>
+        <li><%= link_to "privacy", privacy_path %></li>
+        <li> // </li>
+        <li><%= link_to "terms of use", terms_of_use_path %></li>
+        <li> // </li>
+        <li><%= link_to "contact", contact_path %></li>
+        <li> // </li>
+        <li><%= link_to "about", about_path %></li>
+        <li> // </li>
+        <li><%= link_to "faq", faq_path %></li>
+        <li> // </li>
+        <li><%= link_to "blog", '#' %></li>
+        <li> // </li>
+        <% if artist_signed_in? || fan_signed_in? %>
+          <li><%= link_to "sign out", sign_out_path %></li>
+        <% else %>
+          <li><%= link_to "sign in", sign_in_path %></li>
+        <% end %>
+        <li> // </li>
+      </ul>
+    </nav>
   </div>
 </footer>

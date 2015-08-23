@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="form-title">
+      <h3>edit merch</h3>
+    </div>
+    <%= form_for(@merch, url: artist_merch_path) do |f| %>
+      <div class="field">
+        <%= f.label :paypal_email, "paypal email", class: "label" %>
+        <%= f.text_field :paypal_email, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :about, "about", class: "label" %>
+        <%= f.select :about, options_for_select(merch_about) %>
+      </div>
+      <div class="field">
+        <%= f.label :merch_name, "merch name", class: "label" %>
+        <%= f.text_field :merch_name, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :merch_description, "merch description", class: "label" %>
+        <%= f.text_area :merch_description, class: "text-area" %>
+      </div>
+      <div class="field">
+        <%= f.label :base_price, "base price", class: "label" %>
+        <%= f.text_field :base_price, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :shipping_price, "shipping price", class: "label" %>
+        <%= f.text_field :shipping_price, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :quantity, "quantity", class: "label" %>
+        <%= f.text_field :quantity, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :options, "options", class: "label" %>
+        <%= f.text_field :options, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :merch_image, "merch image url", class: "label" %>
+        <%= f.text_field :merch_image, class: "text-field" %>
+      </div>
+      <div class="field">
+        <%= f.label :return_policy, "return policy", class: "label" %>
+        <%= f.text_area :return_policy, class: "text-area" %>
+      </div>
+      <div class="field">
+        <%= f.label :shipping_info, "shipping info", class: "label" %>
+        <%= f.text_area :shipping_info, class: "text-area" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "edit #{@merch.merch_name}", class: "submit-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>

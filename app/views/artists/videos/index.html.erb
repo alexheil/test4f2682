@@ -1,0 +1,28 @@
+<%= provide(:title, "#{@artist.artist_name} | Videos") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+    <% if @artist.artist_videos.any? %>
+      <% @artist.artist_videos.each do |video| %>
+        <div class="artist-video-title">
+          <%= video.video_title %>
+        </div>
+        <div>
+          <%= embed(video.youtube_video_url) %>
+        </div>
+        <div class="artist-video-description">
+          <%= video.video_description %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-artist-show-profile"><%= "#{@artist.artist_name} hasn't uploaded any videos yet" %></p>
+    <% end %>
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

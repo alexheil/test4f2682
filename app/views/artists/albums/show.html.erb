@@ -1,0 +1,119 @@
+<%= provide(:title, "#{@artist.artist_name} | #{@album.album_name}") %>
+<div class="container">
+  <%= render "/artists/partials/artists_cover_photo_show_nav" %>
+  <div class="artist-show-left">
+    <div class="artist-show-title">
+      <%= @artist.artist_name %>
+    </div>
+    <div class="artist-show-profile">
+
+
+      <div class="artist-album-indv-container">
+        <div class="artist-album-indiv-image">
+          <% if @album.album_cover_art_url == "" %>
+            no image yet
+          <% else %>
+            <img class="image-show artist-album-cover-art-click" src="<%= @album.album_cover_art_url %>" width="450" height="450" />
+
+            <div class="artist-album-lightbox-shadow">
+            </div>
+            <div class="artist-album-lightbox">
+              <img src="<%= @album.album_cover_art_url %>" width="900" height="900" />
+            </div>
+
+          <% end %>
+        </div>
+
+
+        <div class="artist-album-indiv-information">
+          <div class="artist-album-indiv-title">
+            <%= @album.album_name %><span class="artist-album-indiv-year"> // <%= @album.album_year %></span>
+          </div>
+          </br>
+          <div class="artist-album-indiv-track-title">
+            <% if @album.artist_tracks.any? %>
+              <% @album.artist_tracks.take(1).each do |track| %>
+                <%= track.track_name %>
+              <% end %>
+            <% end %>
+          </div>
+
+            <div class="artist-track-playlist-container">
+            <audio id="music" preload="true">
+              <% if @album.artist_tracks.any? %>
+                <% @album.artist_tracks.take(1).each do |track| %>
+                <source src="<%= track.track_url %>">
+                </source>
+                <% end %>
+              <% end %>
+            </audio>
+            <div id="audioplayer">
+              <button id="pButton" class="play" ></button>
+              <div id="current_time">00:00</div>
+              <div id="timeline">
+                    <div id="playhead"></div>
+              </div>
+              <div id="total_duration">00:00</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="artist-album-indiv-container">
+        <div class="artist-album-track-indiv-info-title-left">
+          <p class="artist-album-indiv-info-title">track listing //</p>
+        </div>
+        <div class="artist-album-track-indiv-info-title-right">
+          <p class="artist-album-indiv-info-title">lyrics //</p>
+        </div>
+      </div>
+
+      <div class="artist-album-indiv-container">
+        <% if @album.artist_tracks.any? %>
+          <% @album.artist_tracks.each do |track| %>
+        <div class="artist-album-indiv-info-left">
+            <div class="artist-album-track-listing-album-page">
+              <span class="artist-album-track-listing-mini-play">></span><span class="artist-album-track-url"><%= track.track_url %></span> <%= track.track_number %> - <span class="artist-album-track-title"><%= link_to track.track_name, artist_track_path(track) %></span>
+            </div>
+        </div>
+        <div class="artist-album-indiv-info-right">
+            <div class="artist-album-track-lyrics">
+              <% if track.track_lyrics != "" %>
+                <%= track.track_lyrics %>
+              <% end %>
+            </div>
+        </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="artist-album-indiv-container">
+        <% @artist.artist_albums.each do |album| %>
+          <div class="artist-album-container">
+            <div class="artist-album-image">
+              <%= link_to artist_album_path(album) do %>
+                <img class="image-show" src="<%= album.album_cover_art_url %>" width="280" height="280" />
+              <% end %>
+            </div>
+            <div class="artist-album-name">
+              <%= link_to album.album_name, artist_album_path(album)  %>
+            </div>
+            <div class="artist-album-year">
+              <%= album.album_year %>
+            </div>
+              <% if @artist == current_artist %>
+                <div>
+                  <%= link_to 'edit', edit_artist_album_path(album) %>
+                </div>
+              <% end %>
+          </div>
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>
+  <%= render "artists/partials/artist_sidebar" %>
+</div>
+<%= render "partials/static_pages_footer" %>

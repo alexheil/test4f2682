@@ -1,0 +1,62 @@
+<div class="artist-show-right">
+
+<% if fan_signed_in? && current_fan.following?(@artist) %>
+  <%= button_to "unfollow", relationship_path, method: :delete, class: "artist-sidebar-follow-button" %>
+<% elsif fan_signed_in? %>
+  <%= form_for(current_fan.relationships.build, url: relationships_path) do |f| %>
+    <%= f.hidden_field :artist_id %>
+    <%= f.hidden_field :fan_id %>
+    <%=f.submit "follow", class: "artist-sidebar-follow-button" %>
+  <% end %>
+<% else %>
+  <div class="artist-sidebar-folllow-button-container">
+    <%= link_to "follow", fan_session_path, class: "artist-sidebar-follow-button-no-submit" %>
+  </div>
+<% end %>
+
+<div class="artist-sidebar-fans-follow">
+  <span class="artist-sidebar-fans-number">
+      <% if @artist.fans.count > 0 %>
+        <%= link_to @artist.fans.count, artist_followers_path(@artist) %>
+      <% else %>
+        <%= @artist.fans.count %>
+      <% end %>
+    </span>
+    <% if @artist.fans.count == 1 %>
+      fan
+    <% else %>
+      fans
+    <% end %>
+    <% if @artist.fans.count == 1 %>
+      follows
+    <% else %>
+      follow
+    <% end %>
+    <%= @artist.artist_name %>
+</div>
+
+<% if @artist.artist_merches.any? %>
+  <% @artist.artist_merches.take(4).each do |merch| %>
+  <div class="artist-sidebar-merch-container">
+    <div class="artist-sidebar-merch-image">
+      no image yet
+    </div>
+    <div class="artist-sidebar-merch-name">
+      <%= merch.merch_name %>
+    </div>
+    <div class="artist-sidebar-merch-base-price">
+      <%= merch.base_price %>
+    </div>
+    <div class="artist-sidebar-merch-buy-button-container">
+      <% if merch.quantity >= 1 %>
+        <%= link_to "buy", '#', class: "artist-sidebar-merch-buy-button" %>
+      <% else %>
+        <div class="artist-merch-sold-out">
+          sold out!
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+</div>

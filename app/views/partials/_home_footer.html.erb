@@ -1,28 +1,51 @@
-<footer class="full-footer-container">
+<footer class="full-footer-container nav-background">
   <div class="container">
-    <div class="footer">
-      <span>
-        copyright 2010-2014 project4f2682
-      </span>
-      <nav>
-        <ul>
-          <li> | </li>
-          <li><%= link_to "copyright", copyright_path %></li>
-          <li> | </li>
-          <li><%= link_to "privacy", privacy_path %></li>
-          <li> | </li>
-          <li><%= link_to "terms of use", terms_of_use_path %></li>
-          <li> | </li>
-          <li><%= link_to "contact", contact_path %></li>
-          <li> | </li>
-          <li><%= link_to "about", about_path %></li>
-          <li> | </li>
-          <li><%= link_to "faq", faq_path %></li>
-          <li> | </li>
-          <li><%= link_to "blog", '#' %></li>
-          <li> | </li>
-        </ul>
-      </nav>
-    </div>
+    <nav class="home-footer">
+      <div class="home-footer-title">
+        legal //
+      </div>
+      <div><%= link_to "copyright", copyright_path %></div>
+      <div><%= link_to "privacy", privacy_path %></div>
+      <div><%= link_to "terms of use", terms_of_use_path %></div>
+    </nav>
+    <nav class="home-footer">
+      <div class="home-footer-title">
+        us //
+      </div>
+      <div><%= link_to "contact", contact_path %></div>
+      <div><%= link_to "about", about_path %></div>
+      <div><%= link_to "faq", faq_path %></div>
+      <div><%= link_to "blog", '#' %></div>
+    </nav>
+    <nav class="home-footer">
+      <div class="home-footer-title">
+        social media //
+      </div>
+      <div><%= link_to "facebook", "http://facebook.com/noisaea", :target => "_blank", class: "facebook" %></div>
+      <div><%= link_to "twitter", "http://twitter.com/noisaea", :target => "_blank", class: "twitter" %></div>
+      <div><%= link_to "YouTube", "https://www.youtube.com/channel/UCZaUpn3Lk-3Df1ixPNaVlfA", :target => "_blank", class: "youtube" %></div>
+      <div><%= link_to "google+", "http://plus.google.com/noisaea", :target => "_blank", class: "googleplus" %></div>
+      <div><%= link_to "instagram", "http://instagram.com/noisaea", :target => "_blank", class: "instagram" %></div>
+      <div><%= link_to "tumblr", "http://noisaea.tumblr.com/", :target => "_blank", class: "tumblr" %></div>
+      <div><%= link_to "pinterest", "http://pinterest.com/noisaea", :target => "_blank", class: "pinterest" %></div>
+    </nav>
+    <nav class="home-footer">
+      <div class="home-footer-title">
+        you //
+      </div>
+      <% if artist_signed_in? || fan_signed_in? %>
+        <% if artist_signed_in? %>
+          <div><%= link_to "your page", artist_path(current_artist) %></div>
+        <% elsif fan_signed_in? %>
+          <div><%= link_to "your page", fan_path(current_fan) %></div>
+        <% end %>
+        <div><%= link_to "sign out", sign_out_path %></div>
+      <% else %>
+        <div><%= link_to "artist sign up", new_artist_registration_path %></div>
+        <div><%= link_to "fan sign up", new_fan_registration_path %></div>
+        <div><%= link_to "artist sign in", artist_session_path %></div>
+        <div><%= link_to "fan sign in", fan_session_path %></div>
+      <% end %>
+    </nav>
   </div>
 </footer>

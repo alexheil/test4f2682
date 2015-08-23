@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="landing-container">
+    <div class="artist-add-new-show-button-container">
+      <%= link_to "add a new show", new_artist_show_path, class: "artist-add-new-show-button" %>
+    </div>
+    <% if @artist.artist_shows.any? %>
+    <p class="artist-show-title-option">or click on a show below to edit it</p>
+      <% @artist.artist_shows.each do |show| %>
+        <div class="artist-show-title-select">
+          <%= link_to "#{show.show_month}.#{show.show_month}.#{show.show_year} in #{show.show_location}", edit_artist_show_path(show) %> // <%= link_to "delete show", artist_show_path(show), data: { confirm: "Are you sure? This cannot be undone. Ever..." }, method: :delete %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

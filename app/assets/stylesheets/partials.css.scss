@@ -1,0 +1,214 @@
+/* MIXINS, VARIABLES, ETC... */
+
+$links: #1DE9B6;
+$normal-font: Georgia, "Times New Roman", Times, serif;
+$fancy-font: "Open Sans", Helvetica, sans-serif;
+$browser-width: 1170px;
+
+/* STATIC PAGES HEADER */
+
+.site-title {
+  float: left;
+  font-size: 1.7em;
+  color: $links;
+  padding: 10px;
+  font-family: $fancy-font;
+  font-weight: 300;
+  &:hover {
+    text-decoration: none;
+    color: #A7FFEB;
+  }
+}
+
+.nav-background {
+  background-color: #212121;
+}
+
+.nav {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: right;
+    li {
+      font-family: $fancy-font;
+      padding: 10px;
+      position: relative;
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* ARTIST HEADER */
+
+.artist-dash-site-title {
+  float: left;
+  color: #fff;
+  padding: 10px;
+  font-family: $fancy-font;
+  &:hover {
+    text-decoration: none;
+    color: #1DE9B6;
+  }
+}
+
+.artist-dash-nav-background {
+  background-color: #212121;
+}
+
+.artist-dash-links {
+  color: #fff;
+  &:hover {
+    color: #1DE9B6;
+  }
+}
+
+.artist-dash-nav {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: right;
+    li {
+      color: #212121;
+      font-family: $fancy-font;
+      padding: 10px;
+      position: relative;
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* ***********FANS HEADER*********** */
+
+.fan-dash-site-title {
+  float: left;
+  color: #fff;
+  padding: 10px;
+  font-family: $fancy-font;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.fan-dash-nav-background {
+  width: 100%;
+  background-color: #666666;
+}
+
+.fan-dash-links {
+  color: #fff;
+  &:hover {
+    color: #E6E6E6;
+  }
+}
+
+.fan-dash-nav {
+  width: 100%;
+  display: inline-block;
+  ul {
+    float: right;
+    li {
+      color: #212121;
+      font-family: $fancy-font;
+      padding: 10px;
+      position: relative;
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+/* FOOTER */
+
+.full-footer-container {
+  width: 100%;
+  clear: both;
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+.static-full-footer-container {
+  width: 100%;
+  clear: both;
+  margin-top: 50px;
+  padding-top: 20px;
+  a {
+    color: #212121;
+  }
+}
+
+.footer {
+  width: 100%;
+  display: inline-block;
+  font-family: $fancy-font;
+  span {
+    float: left;
+  }
+  ul {
+    float: right;
+    li {
+      position: relative;
+      float: left;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.home-footer-title {
+  font-family: $fancy-font;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.home-footer {
+  width: 259px;
+  display: inline-block;
+  vertical-align: top;
+  font-family: $fancy-font;
+  margin: 0 15px
+}
+
+.facebook {
+  &:hover {
+    color: #3b5998;
+  }
+}
+
+.twitter {
+  &:hover {
+    color: #00aced;
+  }
+}
+
+.youtube {
+  &:hover {
+    color: #bb0000;
+  }
+}
+
+.googleplus {
+  &:hover {
+    color: #dd4b39;
+  }
+}
+
+.instagram {
+  &:hover {
+    color: #517fa4;
+  }
+}
+
+.tumblr {
+  &:hover {
+    color: #32506d;
+  }
+}
+
+.pinterest {
+  &:hover {
+    color: #cb2027;
+  }
+}

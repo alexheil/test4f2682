@@ -1,3 +1,772 @@
-<li>
-  <%= @artist.artist_name %>
-</li>
+<%= render 'partials/static_pages_header' %>
+<div class="container">
+  <% if @artists.any? %>
+
+  <div id="all-genres" class="artist-discover-genre-title-click lafayette">
+    all
+  </div>
+  <div id="alternative" class="artist-discover-genre-title-click">
+    alternative
+  </div>
+  <div id="ambient" class="artist-discover-genre-title-click">
+    ambient
+  </div>
+  <div id="blues" class="artist-discover-genre-title-click">
+    blues
+  </div>
+  <div id="classical" class="artist-discover-genre-title-click">
+    classical
+  </div>
+  <div id="comedy" class="artist-discover-genre-title-click">
+    comedy
+  </div>
+  <div id="country" class="artist-discover-genre-title-click">
+    country
+  </div>
+  <div id="electronic" class="artist-discover-genre-title-click">
+    electronic
+  </div>
+  <div id="experimental" class="artist-discover-genre-title-click">
+    experimental
+  </div>
+  <div id="hip-hop-rap" class="artist-discover-genre-title-click">
+    hip-hop/rap
+  </div>
+  <div id="indie" class="artist-discover-genre-title-click">
+    indie
+  </div>
+  <div id="jazz" class="artist-discover-genre-title-click">
+    jazz
+  </div>
+  <div id="latino" class="artist-discover-genre-title-click">
+    latino
+  </div>
+  <div id="metal" class="artist-discover-genre-title-click">
+    metal
+  </div>
+  <div id="pop" class="artist-discover-genre-title-click">
+    pop
+  </div>
+  <div id="rb-soul" class="artist-discover-genre-title-click">
+    r&b/soul
+  </div>
+  <div id="rock" class="artist-discover-genre-title-click">
+    rock
+  </div>
+  <div id="singer-songwriter" class="artist-discover-genre-title-click">
+    singer/songwriter
+  </div>
+  <div id="soundtrack" class="artist-discover-genre-title-click">
+    soundtrack
+  </div>
+  <div id="world" class="artist-discover-genre-title-click">
+    world
+  </div>
+
+  <div id="container-all-genres" class="artist-discover-genre-container-all-genres">
+    <% @artists.each do |artist| %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="fan-artist-following-page-genre">
+           <%= artist.artist_profile.genre.downcase %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="container-alternative" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Alternative" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-ambient" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Ambient" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-blues" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Blues" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-classical" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Classical" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-comedy" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Comedy" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-country" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Country" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-electronic" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Electronic" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-experimental" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Experimental" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-hip-hop-rap" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Hip-Hop/Rap" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-indie" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Indie" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-jazz" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Jazz" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-latino" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Latino" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-metal" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Metal" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-pop" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Pop" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-rb-soul" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "R&B/Soul" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-rock" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Rock" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-singer-songwriter" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Singer/Songwriter" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-soundtrack" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "Soundtrack" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="container-world" class="artist-discover-genre-container">
+    <% @artists.each do |artist| %>
+      <% if artist.artist_profile.genre == "World" %>
+      <div class="artist-discover-artist-container">
+        <div class="artist-discover-artist-profile-image">
+          <% if artist.artist_profile.profile_image == "" %>
+          <div class="artist-discover-artist-no-artist-profile-image">
+            <% if artist_signed_in? && artist.id == current_artist.id %>
+            <p class="fan-no-profile-image-yet">you do not have a profile photo yet</p>
+            <p><%= link_to "upload a profile image", edit_artist_profile_path(current_artist), class: "upload-fan-profile-image" %></p>
+            <% else %>
+            <p class="fan-no-profile-image-yet"><%= "#{artist.artist_name} hasn't uploaded a profile image yet" %></p>
+            <% end %>
+            </div>
+          <% else %>
+          <%= link_to artist_path(artist) do %>
+            <img class="image-show" src="<%= artist.artist_profile.profile_image %>" width="210" height="210" />
+          <% end %>
+          <% end %>
+        </div>
+        <div class="artist-discover-artist-artist-name">
+          <%= link_to artist.artist_name, artist_path(artist) %>
+        </div>
+        <div class="artist-follower-page-fan-following">
+            has <span class="artist-follower-page-fan-following-count"><%= link_to artist.fans.count, artist_followers_path(artist) %></span>
+            <% if artist.fans.count == 1 %>
+            fan
+            <% else %>
+            fans
+            <% end %>
+          </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <% else %>
+    unfortunately, no one uses this site
+  <% end %>
+</div>
+<%= render 'partials/static_pages_footer' %>
